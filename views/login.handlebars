@@ -1,0 +1,98 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Serious BUS-iness</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <script type="application/x-javascript">
+            addEventListener("load", function() {
+                setTimeout(hideURLbar, 0);
+            }, false);
+
+            function hideURLbar(){
+                window.scrollTo(0,1);
+            }
+        </script>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
+        <script type="text/javascript">
+            $(window).load(function(){
+                $('div.description').each(function(){
+                    $(this).css('display', 'block');
+                });
+                
+                $('div.content-top-grid').hover(function(){
+                    $(this).children('.description').stop().fadeTo(500, 1);
+                },function(){
+                    $(this).children('.description').stop().fadeTo(500, 0);
+                });
+                
+            });
+        </script>
+        <script type="text/javascript" src="js/jquery.mmenu.js"></script>
+        <script type="text/javascript">
+            //  The menu on the left
+            $(function() {
+                $('nav#menu-left').mmenu();
+            });
+        </script>
+    </head>
+    <body>
+        <!---start-wrap---->
+        <div class="wrap">
+
+
+        <!---start-header---->
+        <div id="page">
+            <div id="header">
+                <div class="logo">
+                    <a href="index.html"><img src="images/logo.png" alt="" /></a>
+                </div>
+            </div>
+        </div>
+
+        <!---start-slider---->
+        <div class="slider">
+        <div class="container">
+
+      <form class="form-signin" role="form" action="process_login">
+        <h1>SIGN-IN REQURIED</h1>
+        <h2 class="form-signin-heading">Sign in now using your UCSD ID!</h2><br/>
+        <input type="text" class="form-control" placeholder="UCSD PID" name="pid"autofocus>
+        <input type="password" class="form-control" placeholder="Password" name="pass">
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+    </div> <!-- /container -->
+        </div>
+        <!---//End-slider---->
+        </div>
+        <div class="bottom-grids">
+            <div class="wrap"> 
+            <div class="bottom-grid-left">
+                <h3>Not enrolled yet?</h3>
+                <div class="bottom-grid-left-grid">
+                    <p>Enroll at TPMS now and receive a RFID add-on to your UCSD ID Card!</p>
+                </div>
+            </div>
+            <div class="clear"> </div>
+            <div class="clear"> </div>
+            </div>
+        </div>
+        <!---//End-content---->
+        </div>
+        <!---//End-wrap---->
+         </div>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="/js/bootstrap.js"></script>
+    </body>
+</html>
+

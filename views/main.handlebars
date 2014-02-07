@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Serious BUS-iness</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <script type="application/x-javascript">
+            addEventListener("load", function() {
+                setTimeout(hideURLbar, 0);
+            }, false);
+
+            function hideURLbar(){
+                window.scrollTo(0,1);
+            }
+        </script>
+        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
+        <script type="text/javascript">
+            $(window).load(function(){
+                $('div.description').each(function(){
+                    $(this).css('display', 'block');
+                });
+                
+                $('div.content-top-grid').hover(function(){
+                    $(this).children('.description').stop().fadeTo(500, 1);
+                },function(){
+                    $(this).children('.description').stop().fadeTo(500, 0);
+                });
+                
+            });
+        </script>
+        <script type="text/javascript" src="js/jquery.mmenu.js"></script>
+        <script type="text/javascript">
+            //  The menu on the left
+            $(function() {
+                $('nav#menu-left').mmenu();
+            });
+        </script>
+    </head>
+    <body>
+        <!---start-wrap---->
+        <div class="wrap">
+
+        <!---start-header---->
+            <div id="page">
+                    <div id="header">
+                        <a class="navicon" href="#menu-left"> </a>
+                        <div class="logo">
+                        <a href="/"><img src="images/logo.png" alt="" /></a>
+                        </div>
+                    </div>
+                    <nav id="menu-left">
+                        <ul>
+                            <li><a href="/main"><img src="images/home-icon.png" alt="" />Home</a></li>
+                            <li><a href="/newresv"><img src="images/blog.png" alt="" />Make a new reservation</a></li>
+                            <li><a href="/liveview"><img src="images/icon.png" alt="" />Live Bus Stop View</a></li>
+                            <li><a href="/process_login?logout=true"><img src="images/return.png" alt="" />Log-out</a></li>
+                            <li>Currently logged in as: </li>
+                            <div class="clear"> </div>
+                        </ul>
+                    </nav>
+                </div>
+        <!---//End-header---->
+
+        <!---start-slider---->
+        <div class="slider">
+        <div class="container">
+
+            <h2>You have no upcoming reservations.</h2>
+
+            <br/>
+            <p><button type="button" class="btn btn-primary btn-lg btn-block">Start a New Reservation</button></p>
+            <br/>
+            <p><button type="button" class="btn btn-primary btn-lg btn-block">See what's going on in bus stops</button></p>
+
+        </div> <!-- /container -->
+        </div>
+        <!---//End-slider---->
+        </div>
+        <div class="bottom-grids">
+            <div class="wrap"> 
+            <div class="bottom-grid-left">
+                <h3>Not enrolled yet?</h3>
+                <div class="bottom-grid-left-grid">
+                    <p>Enroll at TPMS now and receive a RFID add-on to your UCSD ID Card!</p>
+                </div>
+            </div>
+            <div class="clear"> </div>
+            <div class="clear"> </div>
+            </div>
+        </div>
+        <!---//End-content---->
+        </div>
+        <!---//End-wrap---->
+         </div>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="/js/bootstrap.js"></script>
+    </body>
+</html>
+
