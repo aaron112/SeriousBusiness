@@ -14,3 +14,19 @@ exports.view = function(req, res){
         res.render('login');
     }
 };
+
+exports.process = function(req, res){
+
+    if ( req.query.logout ) {
+        // Logging out
+        res.clearCookie('sbpid');
+
+        res.redirect('/');
+    } else {
+        // Write a cookie
+        res.cookie('sbpid', req.body.pid);
+
+        // Redirect to main page
+        res.redirect('/main');
+    }
+};
