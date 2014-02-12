@@ -1,68 +1,22 @@
-/* reset */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
-article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
-ol,ul{list-style:none;margin:0px;padding:0px;}
-blockquote,q{quotes:none;}
-blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
-table{border-collapse:collapse;border-spacing:0;}
-/* start editing from here */
-a{text-decoration:none;}
-.txt-rt{text-align:right;}/* text align right */
-.txt-lt{text-align:left;}/* text align left */
-.txt-center{text-align:center;}/* text align center */
-.float-rt{float:right;}/* float right */
-.float-lt{float:left;}/* float left */
-.clear{clear:both;}/* clear float */
-.pos-relative{position:relative;}/* Position Relative */
-.pos-absolute{position:absolute;}/* Position Absolute */
-.vertical-base{	vertical-align:baseline;}/* vertical align baseline */
-.vertical-top{	vertical-align:top;}/* vertical align top */
-nav.vertical ul li{	display:block;}/* vertical menu */
-nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
-img{max-width:100%;}
-/*end reset*/
-@font-face {
-    font-family: 'permianslabseriftypefaceRg';
-    src: url('../fonts/PermianSlabSerifTypeface-webfont.eot');
-    src: url('../fonts/PermianSlabSerifTypeface-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/PermianSlabSerifTypeface-webfont.woff') format('woff'),
-         url('../fonts/PermianSlabSerifTypeface-webfont.ttf') format('truetype'),
-         url('../fonts/PermianSlabSerifTypeface-webfont.svg#permianslabseriftypefaceRg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+
 body{
-	font-family: 'permianslabseriftypefaceRg';
 	background:#FFF;
 }
 
 /*---start-wrap----*/
+
 .wrap{
 }
+
 .header {
 	padding: 1.5em 0 3em 0;
 }
 
-/*--mmenu-start---*/
 .logo a{
 	margin-top:5px;
 	display:block;
 }
-.mm-menu li.img a{
-		font-size: 16px;
-	}
-.mm-menu li.img a img{
-		float: left;
-		margin: -5px 10px -5px 0;
-	}
-.mm-menu li.img a small
-	{
-		font-size: 12px;
-}
-#page nav
-{
-	display: none;
-}
+
 #header,
 .header,
 #footer
@@ -91,85 +45,16 @@ body{
 	left: 11px;
 	background: url(../images/nav-icon.png) no-repeat;
 }
-#header a.friends,
-.header a.friends
-{
-}
-#header a.right,
-.header a.right
-{
-	left: auto;
-	right: 10px;
-}
-#content,
-.content
-{
-	padding: 12px;
-}
-/*--//End-mmenu-start---*/
 
-/*---start-slider-banner----*/
 .slider{
-	background:#F7F7F7;
-	padding: 4em 1.5em 3em 1.5em;
-	text-align: center;
+    background:#F7F7F7;
+    padding: 3.0em 0em 0em 0em;
+    text-align: center;
 }
 
-/*---End-slider-banner----*/
-
-/*---bottom-grids----*/
-.bottom-grids{
-	background: #222;
-	padding: 1em 12px;
-	color: #eee;
-	font-size: 0.875em;
-	font-family: 'Open Sans', sans-serif;
-	line-height: 1.5em;
-	margin-bottom: 1em;
+.contentwrap {
+    padding: 0em 1em 1em 1em;
 }
-
-.bottom-grids h3{
-	color:#FFF;
-	font-size:1.3em;
-	margin: 0px 0px 0.5em 0;
-}
-
-/*---//bottom-grids----*/
-
-/*---start-icons----*/
-#info {
-	-webkit-border-radius:5px;
-	-moz-border-radius:5px;
-	border-radius:5px;				
-	background:#fcf8e3;
-	border:1px solid  #fbeed5;
-	width:95%;
-	max-width:900px;
-	margin:0 auto 40px auto;
-	font-family:arial;
-	font-size:12px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-o-box-sizing: border-box;
-}
-
-	#info .info-wrapper {
-		padding:10px;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-o-box-sizing: border-box;
-
-	}
-	
-	#info a {
-		color:#c09853;
-		text-decoration:none;
-	}
-	
-	#info p {
-		margin:5px 0 0 0;
-	}
-
 
 .container { 
 	position: relative; 

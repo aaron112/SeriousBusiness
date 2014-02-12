@@ -3,113 +3,121 @@
     <head>
         <title>Serious BUS-iness</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <script type="application/x-javascript">
-            addEventListener("load", function() {
-                setTimeout(hideURLbar, 0);
-            }, false);
 
-            function hideURLbar(){
-                window.scrollTo(0,1);
-            }
-        </script>
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
-        <script type="text/javascript">
-            $(window).load(function(){
-                $('div.description').each(function(){
-                    $(this).css('display', 'block');
-                });
-                
-                $('div.content-top-grid').hover(function(){
-                    $(this).children('.description').stop().fadeTo(500, 1);
-                },function(){
-                    $(this).children('.description').stop().fadeTo(500, 0);
-                });
-                
-            });
-        </script>
-        <script type="text/javascript" src="js/jquery.mmenu.js"></script>
-        <script type="text/javascript">
-            //  The menu on the left
-            $(function() {
-                $('nav#menu-left').mmenu();
-            });
+        <link href="css/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css" media="all" />
 
-            $( document ).on( "pageinit", "#swipepage", function() {
-                $( document ).on( "swipeleft swiperight", "#swipepage", function( e ) {
-                    // We check if there is no open panel on the page because otherwise
-                    // a swipe to close the left panel would also open the right panel (and v.v.).
-                    // We do this by checking the data that the framework stores on the page element (panel: open).
-                    if ( $.mobile.activePage.jqmData( "panel" ) !== "open" ) {
-                        if ( e.type === "swipeleft"  ) {
-                            $('nav#menu-left').mmenu();
-                        } else if ( e.type === "swiperight" ) {
-                            $('nav#menu-left').mmenu();
-                        }
-                    }
-                });
-            });
-        </script>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
+        <script type="text/javascript" src="js/sb.js"></script>
+
     </head>
     <body>
         <!---start-wrap---->
-        <div class="wrap">
+        <div id="page-wrap" class="wrap" data-role="page">
 
         <!---start-header---->
-            <div id="page">
-                    <div id="header">
-                        <a class="navicon" href="#menu-left"> </a>
-                        <div class="logo">
-                        <a href="/"><img src="images/logo.png" alt="" /></a>
-                        </div>
-                    </div>
-                    <nav id="menu-left">
-                        <ul>
-                            <li><a href="/main"><img src="images/home-icon.png" alt="" />Home</a></li>
-                            <li><a href="/newresv"><img src="images/blog.png" alt="" />Make a new reservation</a></li>
-                            <li><a href="/liveview"><img src="images/icon.png" alt="" />Live Bus Information</a></li>
-                            <li><a href="/process_login?logout=true"><img src="images/return.png" alt="" />Log-out</a></li>
-                            <li>Currently logged in as: </li>
-                            <div class="clear"> </div>
-                        </ul>
-                    </nav>
-                </div>
+        <div id="page">
+            <div id="header">
+                <a class="navicon" href="#leftpanel"> </a>
+                <div class="logo">
+                <a href="/"><img src="images/logo.png" alt="" /></a>
+
+            </div>
+        </div>
+
+        <div data-role="panel" id="leftpanel" data-position="left" data-display="overlay" data-theme="b">
+            <ul data-role="listview">
+                <li data-icon="back"><a href="#" data-rel="close">Close</a></li>
+                <li>
+                    <a href="/main">
+                        <img src="images/home-icon.png" alt="" class="ui-li-icon ui-corner-none" />
+                        Home</a>
+                </li>
+                <li>
+                    <a href="/newresv">
+                        <img src="images/blog.png" alt="" class="ui-li-icon ui-corner-none" />
+                        Make a new reservation</a>
+                </li>
+                <li>
+                    <a href="/livebus">
+                        <img src="images/icon.png" alt="" class="ui-li-icon ui-corner-none" />
+                        Live Bus Information</a>
+                </li>
+                <li>
+                    <a href="/process_login?logout=true">
+                        <img src="images/return.png" alt="" class="ui-li-icon ui-corner-none" />
+                        Log-out</a>
+                </li>
+            </ul>
+                    
+        </div>
         <!---//End-header---->
 
-        <!---start-slider---->
+        <!---start-slider (Main content)---->
         <div class="slider">
-        <div class="container">
-            <p class="bg-info">You have no upcoming reservations.</p>
-            <h2></h2>
 
-            <br/>
-            <p><button type="button" class="btn btn-primary btn-lg btn-block">Start a New Reservation</button></p>
-            <br/>
-            <p><button type="button" class="btn btn-primary btn-lg btn-block">See Live Bus Information</button></p>
+        <div data-role="header" style="overflow:hidden;">
+        <h1>Reservations</h1>
+        </div><!-- /header -->
+        <br>
 
-        </div> <!-- /container -->
-        </div>
-        <!---//End-slider---->
-        </div>
-        <div class="bottom-grids">
-            <div class="wrap"> 
-            <div class="bottom-grid-left">
-                <h3>Not enrolled yet?</h3>
-                <div class="bottom-grid-left-grid">
-                    <p>Enroll at TPMS now and receive a RFID add-on to your UCSD ID Card!</p>
-                </div>
-            </div>
-            <div class="clear"> </div>
-            <div class="clear"> </div>
-            </div>
-        </div>
-        <!---//End-content---->
-        </div>
-        <!---//End-wrap---->
-         </div>
+        <div class="contentwrap"><!---Start content-wrap---->
+
+        <!--- Place content HERE ---->
+
+        <ul data-role="listview" data-inset="true" data-split-icon="delete">
+            <li data-role="list-divider">TODAY - Tuesday, February 11, 2014 <span class="ui-li-count">2</span></li>
+
+            <li>
+                <a href="#">
+                <h3>Regents & Nobel</h3>
+                <p>TO: Mandeville Auditorium</p>
+                <p class="ui-li-aside"><strong>9:25</strong>AM</p>
+                </a>
+                <a href="#delete" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+            </li>
+            <li>
+                <a href="#">
+                <h3>Mandeville Auditorium</h3>
+                <p>TO: Regents & Nobel</p>
+                <p class="ui-li-aside"><strong>12:01</strong>PM</p>
+                </a>
+                <a href="#delete" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+            </li>
+
+            <li data-role="list-divider">TOMORROW - Wednesday, February 12, 2014 <span class="ui-li-count">2</span></li>
+
+
+            <li>
+                <a href="#">
+                <h3>Regents & Nobel</h3>
+                <p>TO: Mandeville Auditorium</p>
+                <p class="ui-li-aside"><strong>9:25</strong>AM</p>
+                </a>
+                <a href="#delete" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+            </li>
+            <li>
+                <a href="#">
+                <h3>Mandeville Auditorium</h3>
+                <p>TO: Regents & Nobel</p>
+                <p class="ui-li-aside"><strong>12:01</strong>PM</p>
+                </a>
+                <a href="#delete" data-rel="popup" data-position-to="window" data-transition="pop">Purchase album</a>
+            </li>
+        </ul>
+
+        </div><!---End content-wrap---->
+
+
+        <div data-role="footer" style="overflow:hidden;">
+        <h1>Copyright 2014 SeriousBusiness</h1>
+        </div><!-- /header -->
+        <br>
+
+        </div><!---//End-slider---->
+
+        </div><!---//End-wrap---->
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
@@ -117,4 +125,3 @@
         <script type="text/javascript" src="/js/bootstrap.js"></script>
     </body>
 </html>
-
