@@ -3,65 +3,66 @@
     <head>
         <title>Serious BUS-iness</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <script type="application/x-javascript">
-            addEventListener("load", function() {
-                setTimeout(hideURLbar, 0);
-            }, false);
 
-            function hideURLbar(){
-                window.scrollTo(0,1);
-            }
-        </script>
-        <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href="css/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css" media="all" />
 
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
+        <script type="text/javascript" src="js/sb.js"></script>
+
+    </head>
     <body>
+        <!---start-wrap---->
+        <div id="page-wrap" class="wrap" data-role="page">
 
-    <!---start-wrap---->
-    <div class="wrap">
         <!---start-header---->
-        <div id="header">
-            <div class="logo">
-                <a href="index.html"><img src="images/logo.png" alt="" /></a>
+        <div id="page">
+            <div id="header">
+                <div class="logo">
+                <a href="/"><img src="images/logo.png" alt="" /></a>
+
             </div>
         </div>
+        <!---//End-header---->
 
-        <!---start-slider---->
+        <!---start-slider (Main content)---->
         <div class="slider">
-            <div class="container">
 
-            <form class="form-signin" role="form" action="process_login">
-                <h1>SIGN-IN REQURIED</h1>
-                <h2 class="form-signin-heading">Sign in now using your UCSD ID!</h2><br/>
-                <input type="text" class="form-control" placeholder="UCSD PID" name="pid"autofocus>
-                <br/>
-                <input type="password" class="form-control" placeholder="Password" name="pass">
-                <label class="checkbox">
+        <div data-role="header" style="overflow:hidden;">
+        <h1>SIGN-IN REQURIED</h1>
+        </div><!-- /header -->
+
+        <div class="contentwrap"><!---Start content-wrap---->
+        <h3 class="form-signin-heading">Sign in now using your UCSD ID!</h3>
+
+        <!--- Place content HERE ---->
+
+        <form class="form-signin" role="form" action="process_login">
+            <input type="text" class="form-control" placeholder="UCSD PID" name="pid"autofocus>
+            <input type="password" class="form-control" placeholder="Password" name="pass">
+            <label class="checkbox">
                   <input type="checkbox" value="remember-me"> Remember me
-                </label>
-                <br/>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-            </form>
+            </label>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        </form>
 
-            </div><!-- /container -->
+        </div><!---End content-wrap---->
+
+
+        <div data-role="footer">
+        <h3>Not enrolled yet?</h3>
+        <p>Enroll at TPMS now and receive a RFID sticker for your UCSD ID Card!</p>
+        </div><!-- /header -->
+        <br>
+
         </div><!---//End-slider---->
 
-        <div class="bottom-grids">
-            <div class="wrap"> 
-                <h3>Not enrolled yet?</h3>
-                <p>Enroll at TPMS now and receive a RFID sticker for your UCSD ID Card!</p>
-            </div>
-        </div>
+        </div><!---//End-wrap---->
 
-        <!---//End-content---->
-    </div><!---//End-wrap---->
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/bootstrap.js"></script>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script type="text/javascript" src="/js/bootstrap.js"></script>
     </body>
 </html>
-
