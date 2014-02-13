@@ -57,42 +57,32 @@
         <!---start-slider (Main content)---->
         <div class="slider">
 
-        <div data-role="header" style="overflow:hidden;">
-
-        {{#if line}}
+        <div data-role="header" style="overflow:visible;">
         <a href="/liveview" data-icon="back">Back</a>
-        <h1>Selete Bus Stop</h1>
-        {{else}}
-        <a href="/" data-icon="back">Back</a>
-        <h1>Live View</h1>
-        {{/if}}
+        <h1 style="overflow:visible;">Live View<br>{{stop}}</h1>
         </div><!-- /header -->
+        <br>
+
+
 
         <div class="contentwrap"><!---Start content-wrap---->
 
         <!--- Place content HERE ---->
 
-        {{#if line}}
-        <p style=""><h3>Pick a bus stop below:</h3></p>
-        <div class="btn-group">
-        {{#each busstops}}
-        <a href="javascript: window.location = encodeURI('/viewcam?stop={{name}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
-        {{/each}}
-        </div>
-        {{else}}
 
-        
-        <p style=""><h3>Pick a shuttle below:</h3></p>
-        <div class="btn-group">
-        {{#each shuttlelines}}
-        <a href="?line={{id}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
-        {{/each}}
-        </div>
-
-        {{/if}}
+            <ul data-role="listview" data-inset="true">
+                <li><p><img src="images/busstop.png" style="max-width: 100%;" alt="" /></p></li>
+                <li><h3>Current # in line: 5</h3></li>
+                <li><h3>Next bus at: 9:03 am</h3></li>
+                <li><h3>Estimated waiting time: 10 minutes</h3></li>
+            </ul>
 
         </div><!---End content-wrap---->
 
+
+
+
+        
         <div data-role="footer" style="overflow:hidden;">
         <h1>Copyright 2014 SeriousBusiness</h1>
         </div><!-- /header -->

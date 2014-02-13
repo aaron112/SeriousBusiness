@@ -12,9 +12,8 @@ body{
 	padding: 1.5em 0 3em 0;
 }
 
-.logo a{
+.logo{
 	margin-top:5px;
-	display:block;
 }
 
 #header,
@@ -62,6 +61,15 @@ body{
 	  -moz-transition: all 1s ease;
 	  -o-transition: all 1s ease;
 	  transition: all 1s ease;	
+}
+
+/* Swipe works with mouse as well but often causes text selection. */
+#page-wrap * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 /*---//End-wrap----*/

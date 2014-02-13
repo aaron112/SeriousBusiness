@@ -13,6 +13,8 @@ var login = require('./routes/login');
 var main = require('./routes/main');
 var newresv = require('./routes/newresv');
 var liveview = require('./routes/liveview');
+var choosestop = require('./routes/choosestop');
+var viewcam = require('./routes/viewcam');
 
 
 // Example route
@@ -47,6 +49,8 @@ app.get('/main', main.view);
 
 app.get('/newresv', newresv.view);
 app.get('/liveview', liveview.view);
+app.get('/choosestop', choosestop.view);
+app.get('/viewcam', viewcam.view);
 // Example route
 // app.get('/users', user.list);
 

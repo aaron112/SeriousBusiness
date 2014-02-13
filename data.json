@@ -1,34 +1,52 @@
 {
-	"friends": [
+	"shuttlelines": [
 		{
-			"name": "Doug Engelbart",
-			"description": "Has awesome pet mice",
-			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Douglas_Engelbart_in_2008.jpg/972px-Douglas_Engelbart_in_2008.jpg"			
+			"id": "an",
+			"name": "(A)(N) City Shuttle (Arriba/Nobel)"
 		},
 		{
-			"name": "Ivan Sutherland",
-			"description": "Great at sketching",
-			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/5/5c/Ivan_Sutherland_at_CHM.jpg"			
-		},
-		{
-			"name": "Lucy Suchman",
-			"description": "Loves Trukese navigators",
-			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/d/df/Lucy_Suchman.jpeg"			
-		},
-		{
-			"name": "Vannevar Bush",
-			"description": "Has stellar associative memory",
-			"imageURL": "http://upload.wikimedia.org/wikipedia/commons/e/ea/Vannevar_Bush_portrait.jpg"			
-		},
-		{
-			"name": "Grace Hopper",
-			"description": "Only friend with a Navy ship named after them",
-			"imageURL": "http://www.personal.psu.edu/djd5202/gHop.jpg"
-		},
-		{
-			"name": "Allen Newell",
-			"description": "Really into psychology",
-			"imageURL": "http://www.nap.edu/html/biomems/photo/anewell.JPG"
+			"id": "c",
+			"name": "(C) Coaster East"
 		}
-	]
+	],
+
+	"allbusstops": {
+		"an": [
+			{
+				"name": "Regents and Nobel"
+			},
+			{
+				"name": "Arriba and Regents"
+			},
+			{
+				"name": "Lebon and Palmilla"
+			},
+			{
+				"name": "Nobel and Lebon"
+			},
+			{
+				"name": "Mandeville Auditorium"
+			}
+		],
+		"c": [
+			{
+				"name": "Lot P701"
+			},
+			{
+				"name": "Thornton Hospital"
+			},
+			{
+				"name": "Sorrento Valley Coaster Station"
+			},
+			{
+				"name": "Gilman and Osler (Med School side)"
+			},
+			{
+				"name": "Gilman and Mandeville Lane (Med School side)"
+			},
+			{
+				"name": "Gilman and Myers (Eastbound/Med School side)"
+			}
+		]
+	}
 }
