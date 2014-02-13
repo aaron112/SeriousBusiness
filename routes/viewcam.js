@@ -9,8 +9,12 @@ exports.view = function(req, res){
         res.redirect('/');
 
     } else {
+        var stop = req.query.stop;
+        var data = {};
 
-        res.render('viewcam');
+        data['stop'] = stop;
+
+        res.render('viewcam', data);
     }
 };
 

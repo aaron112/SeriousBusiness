@@ -58,30 +58,40 @@
         <div class="slider">
 
         <div data-role="header" style="overflow:hidden;">
+
+        {{#if line}}
+        <a href="/liveview" data-icon="back">Back</a>
+        <h1>Selete Bus Stop</h1>
+        {{else}}
+        <a href="/" data-icon="back">Back</a>
         <h1>Live View</h1>
+        {{/if}}
         </div><!-- /header -->
-        <br>
-
-
-
-
 
         <div class="contentwrap"><!---Start content-wrap---->
 
         <!--- Place content HERE ---->
 
+        {{#if line}}
+        <p style=""><h3>Pick a bus stop below:</h3></p>
+        <div class="btn-group">
+        {{#each busstops}}
+        <a href="javascript: window.location = encodeURI('/viewcam?stop={{name}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
+        {{/each}}
+        </div>
+        {{else}}
+
         
-        <p style="font-family:arial;color:grey;font-size:20px;">Pick your shuttle</p>
+        <p style=""><h3>Pick a shuttle below:</h3></p>
+        <div class="btn-group">
+        {{#each shuttlelines}}
+        <a href="?line={{id}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
+        {{/each}}
+        </div>
+
+        {{/if}}
 
         </div><!---End content-wrap---->
-        
-        <div class="btn-group">
-        <button type="button" class="btn btn-default">Cityshuttle</button>
-        
-        <button type="button" class="btn btn-default">Coastershuttle</button>
-        
-        <button type="button" class="btn btn-default">Mesa Housing Shuttle</button>
-        </div>
 
         <div data-role="footer" style="overflow:hidden;">
         <h1>Copyright 2014 SeriousBusiness</h1>

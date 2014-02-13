@@ -57,8 +57,9 @@
         <!---start-slider (Main content)---->
         <div class="slider">
 
-        <div data-role="header" style="overflow:hidden;">
-        <h1>Live View</h1>
+        <div data-role="header" style="overflow:visible;">
+        <a href="/liveview" data-icon="back">Back</a>
+        <h1 style="overflow:visible;">Live View<br>{{stop}}</h1>
         </div><!-- /header -->
         <br>
 
@@ -68,13 +69,14 @@
 
         <!--- Place content HERE ---->
 
-        
-        <p style="font-family:arial;color:grey;font-size:20px;">Regents/ Nobel</p>
 
-        <img src="images/busstop.png" alt="" class="ui-li-icon ui-corner-none" />
-        
-        <p style="font-family:arial;color:silver;font-size:17px;">Estimate waiting time: </p>
-        <p>3 minutes</p>
+            <ul data-role="listview" data-inset="true">
+                <li><p><img src="images/busstop.png" style="max-width: 100%;" alt="" /></p></li>
+                <li><h3>Current # in line: 5</h3></li>
+                <li><h3>Next bus at: 9:03 am</h3></li>
+                <li><h3>Estimated waiting time: 10 minutes</h3></li>
+            </ul>
+
         </div><!---End content-wrap---->
 
 
