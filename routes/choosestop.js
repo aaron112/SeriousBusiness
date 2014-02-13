@@ -10,7 +10,7 @@ exports.view = function(req, res){
 
     } else {
 
-        res.render('liveview');
+        res.render('choosestop');
     }
 };
 
