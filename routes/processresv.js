@@ -12,13 +12,18 @@ function createGuid()
 exports.add = function(req, res){
 
     // Check if cookie exists:
-    if ( req.cookies.sbpid ) {
+    if ( req.cookies.sbpid != undefined ) {
 
         console.log("req.cookies.sbpid = " + req.cookies.sbpid);
 
         if ( req.query.newresv ) {
 
             var userresv = data['reservations'][req.cookies.sbpid];
+
+            if ( !userresv ) {
+                userresv = [];
+                data['reservations'][req.cookies.sbpid] = userresv;
+            }
 
             var addid = createGuid();
             var beginstop = req.query.beginstop;

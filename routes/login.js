@@ -22,7 +22,10 @@ exports.process = function(req, res){
         res.clearCookie('sbpid');
 
         res.redirect('/');
+
     } else {
+        console.log("req.body.pid = " + req.body.pid + ", req.query.pid = " + req.query.pid);
+
         // Write a cookie
         res.cookie('sbpid', req.body.pid);
 

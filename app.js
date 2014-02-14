@@ -45,6 +45,7 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', login.view);
+app.post('/process_login', login.process);
 app.get('/process_login', login.process);
 app.get('/main', main.view);
 
