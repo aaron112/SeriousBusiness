@@ -62,7 +62,7 @@ exports.remove = function(req, res) {
                 if ( userresv[i]['id'] == deleteid ) {
 
                     console.log( "delete target found ("+userresv[i]['id']+" = "+deleteid+")" );
-                    userresv.remove(id);
+                    userresv.splice(i, 1);
                     break;
                 }
             }

@@ -19,13 +19,18 @@ exports.view = function(req, res){
 
 		var stop = req.query.stop;
 		var endstop = req.query.endstop;
-		if(line && stop) {
+
+        data['stop'] = stop;
+        data['endstop'] = endstop;
+
+
+        console.log("endstop = " + endstop);
+
+        if ( endstop ) {
+            res.render('time', data);
+        } else if (line && stop) {
 			res.render('destination', data);
-			if(endstop) {
-        		res.render('time', data);
-        	}
-        }
-        else {
+        } else {
         	res.render('newresv', data);
         }
     }

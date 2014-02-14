@@ -58,38 +58,27 @@
         <div class="slider">
 
         <div data-role="header" style="overflow:hidden;">
-
-        {{#if line}}
-        <a href="/liveview" data-icon="back">Back</a>
-        <h1>Selete Bus Stop</h1>
-        {{else}}
-        <a href="/" data-icon="back">Back</a>
-        <h1>Live View</h1>
-        {{/if}}
+        <a href="#" data-icon="back" data-rel="back">Back</a>
+        <h1>Select Time</h1>
         </div><!-- /header -->
 
         <div class="contentwrap"><!---Start content-wrap---->
 
         <!--- Place content HERE ---->
-
-		{{#if line}}
-        <p style=""><h3>Pick your destination:</h3></p>
-        <div class="btn-group">
-        {{#each busstops}}
-        <a href="javascript: window.location = encodeURI(window.location.href+'&endstop={{name}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
-        {{/each}}
-        </div>
-        {{else}}
-
         
         <p style=""><h3>Pick a time below:</h3></p>
-        <div class="btn-group">
-        {{#each shuttlelines.schedule}}
-        <a href="?line={{id}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{time}}</a>
-        {{/each}}
-        </div>
 
-        {{/if}}
+        <ul data-role="listview" data-inset="true" data-split-icon="right">
+
+            {{#each fakeschedule}}
+            <li>
+                <a href="/confirmresv?line={{../line}}&stop={{../stop}}&endstop={{../endstop}}&time={{time}}">
+                <h3>{{time}} (Seats Left: {{seatsleft}})</h3>
+                <p class="ui-li-aside"><strong>Walk-in: {{walkin}}</strong></p>
+                </a>
+            </li>
+            {{/each}}
+        </ul>
 
         </div><!---End content-wrap---->
 

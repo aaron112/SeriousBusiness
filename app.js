@@ -13,12 +13,10 @@ var login = require('./routes/login');
 var main = require('./routes/main');
 var newresv = require('./routes/newresv');
 var liveview = require('./routes/liveview');
-var choosestop = require('./routes/choosestop');
 var viewcam = require('./routes/viewcam');
 
 var processresv = require('./routes/processresv');
-var destination = require('./routes/destination');
-var time = require('./routes/time');
+var confirmresv = require('./routes/confirmresv');
 
 // Example route
 // var user = require('./routes/user');
@@ -51,12 +49,13 @@ app.get('/process_login', login.process);
 app.get('/main', main.view);
 
 app.get('/newresv', newresv.view);
-app.get('/destination', destination.view);
+app.get('/confirmresv', confirmresv.view);
+
 app.get('/liveview', liveview.view);
-app.get('/choosestop', choosestop.view);
 app.get('/viewcam', viewcam.view);
-app.get('/time', time.view);
+
 app.get('/addresv', processresv.add);
+app.get('/removeresv', processresv.remove);
 
 // Example route
 // app.get('/users', user.list);
