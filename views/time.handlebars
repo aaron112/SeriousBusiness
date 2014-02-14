@@ -10,7 +10,7 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
         <script type="text/javascript" src="js/sb.js"></script>
-		<script type="text/javascript" src="js/newresv.js"></script>
+
     </head>
     <body>
         <!---start-wrap---->
@@ -58,21 +58,40 @@
         <div class="slider">
 
         <div data-role="header" style="overflow:hidden;">
-        <h1>Reservations</h1>
+
+        {{#if line}}
+        <a href="/liveview" data-icon="back">Back</a>
+        <h1>Selete Bus Stop</h1>
+        {{else}}
+        <a href="/" data-icon="back">Back</a>
+        <h1>Live View</h1>
+        {{/if}}
         </div><!-- /header -->
-        <br>
 
         <div class="contentwrap"><!---Start content-wrap---->
 
-        <!--- Place content HERE -->
-        {{#each allbusstops.an}}
-    	<div class="allbusstops">
-        <h3><a href="/bus?shuttle={{id}}" class="name" id="{{name}}">{{name}}</a></h3>
-    	</div>
-    	<hr/>
-    	{{/each}}
-        </div><!---End content-wrap---->
+        <!--- Place content HERE ---->
 
+		{{#if line}}
+        <p style=""><h3>Pick your destination:</h3></p>
+        <div class="btn-group">
+        {{#each busstops}}
+        <a href="javascript: window.location = encodeURI(window.location.href+'&endstop={{name}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
+        {{/each}}
+        </div>
+        {{else}}
+
+        
+        <p style=""><h3>Pick a time below:</h3></p>
+        <div class="btn-group">
+        {{#each shuttlelines.schedule}}
+        <a href="?line={{id}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{time}}</a>
+        {{/each}}
+        </div>
+
+        {{/if}}
+
+        </div><!---End content-wrap---->
 
         <div data-role="footer" style="overflow:hidden;">
         <h1>Copyright 2014 SeriousBusiness</h1>

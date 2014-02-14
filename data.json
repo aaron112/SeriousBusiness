@@ -2,7 +2,12 @@
 	"shuttlelines": [
 		{
 			"id": "an",
-			"name": "(A)(N) City Shuttle (Arriba/Nobel)"
+			"name": "(A)(N) City Shuttle (Arriba/Nobel)",
+			"time": [
+				"9:00am",
+				"10:00am",
+				"11:00am"
+			]
 		},
 		{
 			"id": "c",
@@ -46,24 +51,6 @@
 			},
 			{
 				"name": "Gilman and Myers (Eastbound/Med School side)"
-			}
-		]
-	},
-
-	"reservations": {
-		"A11044483": [
-			{
-				"id": "1",
-				"beginstop": "Regents and Nobel",
-				"endstop": "Mandeville Auditorium",
-				"time": "9:25AM"
-			},
-
-			{
-				"id": "2",
-				"beginstop": "Mandeville Auditorium",
-				"endstop": "Regents and Nobel",
-				"time": "12:01AM"
 			}
 		]
 	}

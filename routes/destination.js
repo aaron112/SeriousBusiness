@@ -17,16 +17,13 @@ exports.view = function(req, res){
         console.log("line = " + line);
         console.log(data['allbusstops'][line]);
 
-		var stop = req.query.stop;
 		var endstop = req.query.endstop;
-		if(line && stop) {
-			res.render('destination', data);
-			if(endstop) {
-        		res.render('time', data);
-        	}
-        }
-        else {
-        	res.render('newresv', data);
+		if(endstop) {
+			res.render('time', data);
+		}
+		else {
+			console.log("here");
+        	res.render('destination', data);
         }
     }
 };
