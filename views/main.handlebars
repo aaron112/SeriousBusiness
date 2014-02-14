@@ -11,6 +11,30 @@
         <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
         <script type="text/javascript" src="js/sb.js"></script>
 
+        <script type="text/javascript">
+
+        var deleteId = null;
+
+
+        function showDeleteDialog(id) {
+
+            console.log("showDeleteDialog("+id+")");
+
+            deleteId = id;
+
+            //$("body").pagecontainer("change", "#deleteDialog", {reloadPage: false, changeHash: false, role: "popup", allowSamePageTransition: true});
+
+            $( "body" ).pagecontainer( "getActivePage" ).find('#deleteDialog').popup('open', { positionTo: "window", transition: "pop" });
+        }
+
+        function actionDelete() {
+
+            console.log("actionDelete("+deleteId+")");
+
+            $("body").pagecontainer("change", "/removeresv?deleteid="+deleteId, {allowSamePageTransition: true, reloadPage: true, changeHash: false});
+        }
+        </script>
+
     </head>
     <body>
         <!---start-wrap---->
@@ -68,7 +92,7 @@
             <div role="main" class="ui-content">
                 <h3 class="ui-title">Are you sure you want to delete this reservation?</h3>
                 <p>This action cannot be undone.</p>
-                <a href="javascript: actionDelete();" class="ui-icon-delete ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-b">Delete</a>
+                <a href="javascript: actionDelete();" data-rel="external" class="ui-icon-delete ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-b">Delete</a>
                 <a href="#" class="ui-icon-carat-l ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-a" data-rel="back" data-transition="flow">Cancel</a>
             </div>
         </div>
@@ -76,7 +100,7 @@
         <!--- Place content HERE ---->
 
         {{#if showreserv}}
-        <a id="showDialog" href="#deleteDialog" data-rel="popup" data-position-to="window" data-transition="pop" style='display:none;'></a>
+
 
         <ul data-role="listview" data-inset="true" data-split-icon="delete">
             <li data-role="list-divider">TODAY - Friday, February 14, 2014 <span class="ui-li-count">{{myreserv.length}}</span></li>
@@ -115,7 +139,7 @@
 
         {{else}}
 
-        <div class="alert alert-warning">You do not have any reservations yet. Tap the top-left corner see available actions.</div>
+        <div class="alert alert-warning">You do not have any reservations yet. Tap the top-left corner see available options.</div>
 
         {{/if}}
 

@@ -12,28 +12,7 @@ exports.view = function(req, res){
 
     } else {
 
-        console.log("req.cookies.sbpid = " + req.cookies.sbpid);
-
         var userresv = data['reservations'][req.cookies.sbpid];
-        var deleteid = req.query.deleteid;
-        var id = 0;
-
-        if (deleteid) {
-            console.log( "deleteid = " + deleteid );
-
-            for ( i=0; i < userresv.length; ++i ) {
-                console.log( "for loop: " + i );
-
-                if ( userresv[i]['id'] == deleteid ) {
-
-                    console.log( "delete target found" );
-                    userresv.splice(id, 1);
-                    break;
-                }
-            }
-
-        }
-
 
         data['myreserv'] = userresv;
 
