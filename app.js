@@ -15,6 +15,8 @@ var newresv = require('./routes/newresv');
 var liveview = require('./routes/liveview');
 var choosestop = require('./routes/choosestop');
 var viewcam = require('./routes/viewcam');
+var anshuttle = require('./routes/anshuttle');
+var cshuttle = require('./routes/cshuttle');
 
 
 // Example route
@@ -48,9 +50,13 @@ app.get('/process_login', login.process);
 app.get('/main', main.view);
 
 app.get('/newresv', newresv.view);
+app.get('/bus', newresv.process);
+app.get('/anshuttle', anshuttle.view);
+app.get('/cshuttle', cshuttle.view);
 app.get('/liveview', liveview.view);
 app.get('/choosestop', choosestop.view);
 app.get('/viewcam', viewcam.view);
+
 // Example route
 // app.get('/users', user.list);
 

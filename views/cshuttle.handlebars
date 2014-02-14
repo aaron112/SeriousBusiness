@@ -64,27 +64,9 @@
 
         <div class="contentwrap"><!---Start content-wrap---->
 
-        <!--- Place content HERE ---->
-        
-        <!--<div data-role="page" id="testpage">
-			<div data-role="content">
-				<ul data-role="listview" id="listitem" data-divider-theme="a" data-inset="true">
-            	</ul>
-        	</div>
-        	<script type="text/javascript">
-        	$(document).on("pageinit", "#testpage", function(){
-        		$.getJSON("data.json", function(data){
-            	var output = '';
-            	$.each(data, function(index, value){                   
-            	output += '<li><a href="#" id="' + shuttlelines.name + '">' +shuttlelines.name+ '</a></li>';
-            	});
-            	$('#listitem').html(output);
-        });
-        	</script>
-        </div>-->
-        
-        {{#each shuttlelines}}
-    	<div class="shuttles">
+        <!--- Place content HERE -->
+        {{#each allbusstops.c}}
+    	<div class="allbusstops">
         <h3><a href="/bus?shuttle={{id}}" class="name" id="{{name}}">{{name}}</a></h3>
     	</div>
     	<hr/>
