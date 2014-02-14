@@ -68,34 +68,31 @@
             <div role="main" class="ui-content">
                 <h3 class="ui-title">Are you sure you want to delete this reservation?</h3>
                 <p>This action cannot be undone.</p>
-                <a href="#" class="ui-icon-delete ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-b" data-rel="back">Delete</a>
+                <a href="javascript: actionDelete();" class="ui-icon-delete ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-b">Delete</a>
                 <a href="#" class="ui-icon-carat-l ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-a" data-rel="back" data-transition="flow">Cancel</a>
             </div>
         </div>
 
         <!--- Place content HERE ---->
 
+        {{#if showreserv}}
+        <a id="showDialog" href="#deleteDialog" data-rel="popup" data-position-to="window" data-transition="pop" style='display:none;'></a>
+
         <ul data-role="listview" data-inset="true" data-split-icon="delete">
-            <li data-role="list-divider">TODAY - Tuesday, February 11, 2014 <span class="ui-li-count">2</span></li>
+            <li data-role="list-divider">TODAY - Friday, February 14, 2014 <span class="ui-li-count">{{myreserv.length}}</span></li>
 
+            {{#each myreserv}}
             <li>
                 <a href="#">
-                <h3>Regents & Nobel</h3>
-                <p>TO: Mandeville Auditorium</p>
-                <p class="ui-li-aside"><strong>9:25</strong>AM</p>
+                <h3>{{beginstop}}</h3>
+                <p>TO: {{endstop}}</p>
+                <p class="ui-li-aside"><strong>{{time}}</strong></p>
                 </a>
-                <a href="#deleteDialog" data-rel="popup" data-position-to="window" data-transition="pop">Cancel Reservation</a>
+                <a href="javascript: showDeleteDialog({{id}});">Cancel Reservation</a>
             </li>
-            <li>
-                <a href="#">
-                <h3>Mandeville Auditorium</h3>
-                <p>TO: Regents & Nobel</p>
-                <p class="ui-li-aside"><strong>12:01</strong>PM</p>
-                </a>
-                <a href="#deleteDialog" data-rel="popup" data-position-to="window" data-transition="pop">Cancel Reservation</a>
-            </li>
+            {{/each}}
 
-            <li data-role="list-divider">TOMORROW - Wednesday, February 12, 2014 <span class="ui-li-count">2</span></li>
+            <li data-role="list-divider">TOMORROW - Saturday, February 15, 2014 <span class="ui-li-count">2</span></li>
 
 
             <li>
@@ -115,6 +112,12 @@
                 <a href="#deleteDialog" data-rel="popup" data-position-to="window" data-transition="pop">Cancel Reservation</a>
             </li>
         </ul>
+
+        {{else}}
+
+        <div class="alert alert-warning">You do not have any reservations yet. Tap the top-left corner see available actions.</div>
+
+        {{/if}}
 
         </div><!---End content-wrap---->
 

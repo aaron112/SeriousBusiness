@@ -12,3 +12,22 @@ $( document ).on( "pagecreate", "#page-wrap", function() {
         }
     });
 });
+
+var deleteId = null;
+
+
+function showDeleteDialog(id) {
+
+    console.log("showDeleteDialog("+id+")");
+
+    deleteId = id;
+
+    $("#showDialog").click();
+}
+
+function actionDelete() {
+
+    console.log("actionDelete("+deleteId+")");
+
+    $("body").pagecontainer("change", "/main?deleteid="+deleteId, {});
+}

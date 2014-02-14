@@ -17,7 +17,7 @@ exports.view = function(req, res){
 
 exports.process = function(req, res){
 
-    if ( req.query.logout ) {
+    if ( req.query.logout == 'true' ) {
         // Logging out
         res.clearCookie('sbpid');
 

@@ -15,8 +15,8 @@ var newresv = require('./routes/newresv');
 var liveview = require('./routes/liveview');
 var choosestop = require('./routes/choosestop');
 var viewcam = require('./routes/viewcam');
-var anshuttle = require('./routes/anshuttle');
-var cshuttle = require('./routes/cshuttle');
+//var anshuttle = require('./routes/anshuttle');
+//var cshuttle = require('./routes/cshuttle');
 
 
 // Example route
@@ -24,7 +24,7 @@ var cshuttle = require('./routes/cshuttle');
 
 var app = express();
 
-// all environments
+// all environmentscshutt
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', handlebars());
@@ -47,12 +47,13 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', login.view);
 app.get('/process_login', login.process);
+app.post('/process_login', login.process);
 app.get('/main', main.view);
 
 app.get('/newresv', newresv.view);
 app.get('/bus', newresv.process);
-app.get('/anshuttle', anshuttle.view);
-app.get('/cshuttle', cshuttle.view);
+//app.get('/anshuttle', anshuttle.view);
+//app.get('/cshuttle', cshuttle.view);
 app.get('/liveview', liveview.view);
 app.get('/choosestop', choosestop.view);
 app.get('/viewcam', viewcam.view);
