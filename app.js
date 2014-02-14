@@ -60,6 +60,7 @@ app.get('/liveview', liveview.view);
 app.get('/choosestop', choosestop.view);
 app.get('/viewcam', viewcam.view);
 
+app.get('/addresv', processresv.add);
 app.get('/removeresv', processresv.remove);
 
 // Example route
