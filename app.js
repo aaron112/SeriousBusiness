@@ -15,18 +15,15 @@ var newresv = require('./routes/newresv');
 var liveview = require('./routes/liveview');
 var choosestop = require('./routes/choosestop');
 var viewcam = require('./routes/viewcam');
-
-var processresv = require('./routes/processresv');
-//var anshuttle = require('./routes/anshuttle');
-//var cshuttle = require('./routes/cshuttle');
-
+var destination = require('./routes/destination');
+var time = require('./routes/time');
 
 // Example route
 // var user = require('./routes/user');
 
 var app = express();
 
-// all environmentscshutt
+// all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', handlebars());
@@ -49,18 +46,14 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', login.view);
 app.get('/process_login', login.process);
-app.post('/process_login', login.process);
 app.get('/main', main.view);
 
 app.get('/newresv', newresv.view);
-app.get('/bus', newresv.process);
-//app.get('/anshuttle', anshuttle.view);
-//app.get('/cshuttle', cshuttle.view);
+app.get('/destination', destination.view);
 app.get('/liveview', liveview.view);
 app.get('/choosestop', choosestop.view);
 app.get('/viewcam', viewcam.view);
-
-app.get('/removeresv', processresv.remove);
+app.get('/time', time.view);
 
 // Example route
 // app.get('/users', user.list);

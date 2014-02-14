@@ -10,7 +10,7 @@
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
         <script type="text/javascript" src="js/sb.js"></script>
-		<script type="text/javascript" src="js/newresv.js"></script>
+
     </head>
     <body>
         <!---start-wrap---->
@@ -58,39 +58,40 @@
         <div class="slider">
 
         <div data-role="header" style="overflow:hidden;">
-        <h1>Reservations</h1>
+
+        {{#if line}}
+        <a href="/liveview" data-icon="back">Back</a>
+        <h1>Selete Bus Stop</h1>
+        {{else}}
+        <a href="/" data-icon="back">Back</a>
+        <h1>Reservation</h1>
+        {{/if}}
         </div><!-- /header -->
-        <br>
 
         <div class="contentwrap"><!---Start content-wrap---->
 
         <!--- Place content HERE ---->
-        
-        <!--<div data-role="page" id="testpage">
-			<div data-role="content">
-				<ul data-role="listview" id="listitem" data-divider-theme="a" data-inset="true">
-            	</ul>
-        	</div>
-        	<script type="text/javascript">
-        	$(document).on("pageinit", "#testpage", function(){
-        		$.getJSON("data.json", function(data){
-            	var output = '';
-            	$.each(data, function(index, value){                   
-            	output += '<li><a href="#" id="' + shuttlelines.name + '">' +shuttlelines.name+ '</a></li>';
-            	});
-            	$('#listitem').html(output);
-        });
-        	</script>
-        </div>-->
-        
-        {{#each shuttlelines}}
-    	<div class="shuttles">
-        <h3><a href="/bus?shuttle={{id}}" class="name" id="{{name}}">{{name}}</a></h3>
-    	</div>
-    	<hr/>
-    	{{/each}}
-        </div><!---End content-wrap---->
 
+        {{#if line}}
+        <p style=""><h3>Pick your start stop:</h3></p>
+        <div class="btn-group">
+        {{#each busstops}}
+        <a href="javascript: window.location = encodeURI(window.location.href+'&stop={{name}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
+        {{/each}}
+        </div>
+        {{else}}
+
+        
+        <p style=""><h3>Pick a shuttle below:</h3></p>
+        <div class="btn-group">
+        {{#each shuttlelines}}
+        <a href="?line={{id}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
+        {{/each}}
+        </div>
+
+        {{/if}}
+
+        </div><!---End content-wrap---->
 
         <div data-role="footer" style="overflow:hidden;">
         <h1>Copyright 2014 SeriousBusiness</h1>
