@@ -1,5 +1,6 @@
 
-var data = require('../data.json');
+var models = require('../models');
+//var data = require('../data.json');
 
 function createGuid()
 {
@@ -11,6 +12,11 @@ function createGuid()
 
 exports.add = function(req, res){
 
+    //var addid = createGuid();
+    var beginstop = req.query.beginstop;
+    var endstop = req.query.endstop;
+    var schid = req.query.schid;
+
     // Check if cookie exists:
     if ( req.cookies.sbpid != undefined ) {
 
@@ -18,31 +24,23 @@ exports.add = function(req, res){
 
         if ( req.query.newresv ) {
 
-            var userresv = data['reservations'][req.cookies.sbpid];
+            console.log( "userid = " + req.cookies.sbpid + ", beginstop = " + beginstop
+            + ", endstop = " + endstop + ", schid = " + schid );
 
-            if ( !userresv ) {
-                userresv = [];
-                data['reservations'][req.cookies.sbpid] = userresv;
-            }
-
-            var addid = createGuid();
-            var beginstop = req.query.beginstop;
-            var endstop = req.query.endstop;
-            var time = req.query.time;
-
-            console.log( "addid = " + addid + ", beginstop = " + beginstop
-            + ", endstop = " + endstop + ", time = " + time );
-            
-            userresv.push({
-                "id": addid,
-                "beginstop": beginstop,
-                "endstop": endstop,
-                "time": time
+            var newEntry = new models.Reservations({
+                'userid': req.cookies.sbpid,
+                'beginstop': beginstop,
+                'endstop': endstop,
+                'schid': schid
             });
+
+            newEntry.save(function (err) {
+                if(err) { console.log(err); res.send(500); }
+                else res.redirect('/');
+            });
+
         }
     }
-
-    res.redirect('/');
 };
 
 exports.remove = function(req, res) {
@@ -55,25 +53,18 @@ exports.remove = function(req, res) {
 
         console.log("req.cookies.sbpid = " + req.cookies.sbpid);
 
-        var userresv = data['reservations'][req.cookies.sbpid];
         var deleteid = req.query.deleteid;
-        var id = 0;
 
         if (deleteid) {
-            console.log( "deleteid = " + deleteid );
-            
-            for ( i=0; i < userresv.length; ++i ) {
-
-                if ( userresv[i]['id'] == deleteid ) {
-
-                    console.log( "delete target found ("+userresv[i]['id']+" = "+deleteid+")" );
-                    userresv.splice(i, 1);
-                    break;
-                }
-            }
-
-            res.redirect('/main');
-
+            models.Reservations
+                .find( { "_id": deleteid } )
+                .remove()
+                .exec(function (err) {
+                    if(err) { console.log(err); res.send(500); }
+                    else res.redirect('/');
+                });
+        } else {
+            res.redirect('/');
         }
     }
 };

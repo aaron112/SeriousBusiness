@@ -7,6 +7,7 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
+var mongoose = require('mongoose');
 
 
 var login = require('./routes/login');
@@ -17,6 +18,12 @@ var viewcam = require('./routes/viewcam');
 
 var processresv = require('./routes/processresv');
 var confirmresv = require('./routes/confirmresv');
+
+
+var local_database_name = 'sb';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name
+var database_uri = process.env.MONGOLAB_URI || local_database_uri
+mongoose.connect(database_uri);
 
 // Example route
 // var user = require('./routes/user');

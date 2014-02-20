@@ -1,7 +1,6 @@
-// Get all of our friend data
-//var data = require('../data.json');
 
-var data = require('../data.json');
+var utils = require('../utils');
+var models = require('../models');
 
 exports.view = function(req, res){
 	//console.log(data);
@@ -12,15 +11,32 @@ exports.view = function(req, res){
 
     } else {
 
-        var userresv = data['reservations'][req.cookies.sbpid];
+        models.Reservations
+            .find( {'userid': req.cookies.sbpid} )
+            .populate('beginstop', 'name')
+            .populate('endstop', 'name')
+            .populate('schid')
+            .exec(renderReservations);
+    }
 
+    function renderReservations(err, userresv) {
+        if(err) { console.log(err); res.send(500); }
+
+        var schEntry;
+
+        for ( var i in userresv ) {
+            userresv[i]['time'] = utils.toTime(new Date(userresv[i].schid.date));
+        }
+
+        var data = {};
         data['myreserv'] = userresv;
 
-        if ( data['myreserv'] != undefined )
-            data['showreserv'] = (data['myreserv'].length > 0);
+        if ( userresv != undefined )
+            data['showreserv'] = (userresv.length > 0);
         else
             data['showreserv'] = false;
 
         res.render('main', data);
     }
 };
+

@@ -5,10 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css" media="all" />
+
         
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
-        <script type="text/javascript" src="js/sb.js"></script>
 
     </head>
     <body>
@@ -36,9 +37,9 @@
         <h3 class="form-signin-heading">Sign in now using your UCSD ID!</h3>
 
         <!--- Place content HERE ---->
-
-        <form role="form" action="process_login" method="post">
-            <input type="text" placeholder="UCSD PID" name="pid"autofocus>
+        
+        <form role="form" data-ajax="false" action="/process_login" method="post">
+            <input type="text" placeholder="UCSD PID" name="pid" autofocus>
             <input type="password" placeholder="Password" name="pass">
             <label class="checkbox">
                   <input type="checkbox" value="remember-me"> Remember me

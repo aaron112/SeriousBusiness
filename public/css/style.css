@@ -65,7 +65,7 @@ body{
 
 /* Swipe works with mouse as well but often causes text selection. */
 #page-wrap * {
-    -webkit-user-select: none;
+    /** -webkit-user-select: none; */
     -moz-user-select: none;
     -ms-user-select: none;
     -o-user-select: none;

@@ -58,6 +58,7 @@
         <div class="slider">
 
         <div data-role="header" style="overflow:hidden;">
+        <a href="#" data-icon="back" data-rel="back">Back</a>
         <h1>Confirm Reservation</h1>
         </div><!-- /header -->
         <br>
@@ -69,10 +70,10 @@
         <ul data-role="listview" data-inset="true">
             <li><h3>Shuttle:</h3><p>{{line}}</p></li>
             <li><h3>Time:</h3><p>{{time}}</p></li>
-            <li><h3>From:</h3><p>{{stop}}</p></li>
+            <li><h3>From:</h3><p>{{beginstop}}</p></li>
             <li><h3>To:</h3><p>{{endstop}}</p></li>
 
-            <li><a href="/addresv?newresv=true&line={{lineid}}&beginstop={{stop}}&endstop={{endstop}}&time={{time}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">CONFIRM</a></li>
+            <li><a href="/addresv?newresv=true&beginstop={{beginstopid}}&endstop={{endstopid}}&schid={{schid}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">CONFIRM</a></li>
         </ul>
 
         </div><!---End content-wrap---->

@@ -1,123 +1,54 @@
 {
-	"shuttlelines": [
+	"Shuttles": [
 		{
 			"id": "an",
 			"name": "(A)(N) City Shuttle (Arriba/Nobel)"
 		},
 		{
-			"id": "c",
-			"name": "(C) Coaster East"
+			"id": "201",
+			"name": "(201) MTS Counterclockwise"
+		},
+		{
+			"id": "202",
+			"name": "(202) MTS Clockwise"
 		}
 	],
 
-	"shuttleidtoname": {
-		"an": "(A)(N) City Shuttle (Arriba/Nobel)",
-		"c": "(C) Coaster East"
-	},
+	"Busstops": [
+		{"sid": "an", "name": "Regents & Nobel"},
+		{"sid": "an", "name": "Arriba & Regents"},
+		{"sid": "an", "name": "Lebon & Palmilla"},
+		{"sid": "an", "name": "Nobel & Lebon"},
+		{"sid": "an", "name": "Mandeville Auditorium"},
 
-	"allbusstops": {
-		"an": [
-			{
-				"name": "Regents and Nobel"
-			},
-			{
-				"name": "Arriba and Regents"
-			},
-			{
-				"name": "Lebon and Palmilla"
-			},
-			{
-				"name": "Nobel and Lebon"
-			},
-			{
-				"name": "Mandeville Auditorium"
-			}
-		],
-		"c": [
-			{
-				"name": "Lot P701"
-			},
-			{
-				"name": "Thornton Hospital"
-			},
-			{
-				"name": "Sorrento Valley Coaster Station"
-			},
-			{
-				"name": "Gilman and Osler (Med School side)"
-			},
-			{
-				"name": "Gilman and Mandeville Lane (Med School side)"
-			},
-			{
-				"name": "Gilman and Myers (Eastbound/Med School side)"
-			}
-		]
-	},
+		{"sid": "201", "name": "Executive Dr & Regents Rd"},
+		{"sid": "201", "name": "Gilman Dr & Eucalyptus Grove Ln"},
+		{"sid": "201", "name": "Gilman Dr & Myers Dr"},
+		{"sid": "201", "name": "Medical Center Dr & Health Sciences Dr"},
+		{"sid": "201", "name": "Nobel Dr & La Jolla Village Square Drwy"},
+		{"sid": "201", "name": "Nobel Dr & Lebon Dr"},
+		{"sid": "201", "name": "Nobel Dr & Regents Rd"},
+		{"sid": "201", "name": "Palmilla Dr & Lebon Dr"},
+		{"sid": "201", "name": "Regents Rd & Arriba St"},
+		{"sid": "201", "name": "UTC Transit Center"},
+		{"sid": "201", "name": "Villa La Jolla Dr & Gilman Dr"},
+		{"sid": "201", "name": "Voigt Dr & Scripps Memorial Hospital"},
 
-	"reservations": {
-		"A11044483": [
-			{
-				"id": "1",
-				"beginstop": "Regents and Nobel",
-				"endstop": "Mandeville Auditorium",
-				"time": "9:25AM"
-			},
+		{"sid": "202", "name": "Arriba St & Regents Rd"},
+		{"sid": "202", "name": "Executive Dr & Regents Rd"},
+		{"sid": "202", "name": "Gilman Dr & Eucalyptus Grove Ln"},
+		{"sid": "202", "name": "Gilman Dr & Myers Dr"},
+		{"sid": "202", "name": "Gilman Dr & Villa La Jolla Dr"},
+		{"sid": "202", "name": "Lebon Dr & Palmilla Dr"},
+		{"sid": "202", "name": "Medical Center Dr & Health Sciences Dr"},
+		{"sid": "202", "name": "Nobel Dr & La Jolla Village Square Drwy"},
+		{"sid": "202", "name": "Nobel Dr & Lebon Dr"},
+		{"sid": "202", "name": "Regents Rd & Nobel Dr"},
+		{"sid": "202", "name": "UTC Transit Center"},
+		{"sid": "202", "name": "Voigt Dr & Scripps Memorial Hospital"}
+	],
 
-			{
-				"id": "2",
-				"beginstop": "Mandeville Auditorium",
-				"endstop": "Regents and Nobel",
-				"time": "12:01AM"
-			}
-		]
-	},
-
-	"fakeschedule": [
-		{
-			"time": "9:00AM",
-			"seatsleft": 16,
-			"walkin": 30
-		},
-		{
-			"time": "9:15AM",
-			"seatsleft": 5,
-			"walkin": 30
-		},
-		{
-			"time": "9:30AM",
-			"seatsleft": 10,
-			"walkin": 30
-		},
-		{
-			"time": "9:45AM",
-			"seatsleft": 10,
-			"walkin": 30
-		},
-		{
-			"time": "10:00AM",
-			"seatsleft": 11,
-			"walkin": 30
-		},
-		{
-			"time": "10:15AM",
-			"seatsleft": 12,
-			"walkin": 30
-		},
-		{
-			"time": "10:30AM",
-			"seatsleft": 13,
-			"walkin": 30
-		},
-		{
-			"time": "10:45AM",
-			"seatsleft": 20,
-			"walkin": 30
-		},
-		{
-			"time": "11:00AM",
-			"seatsleft": 21,
-			"walkin": 30
-		}
+	"Schedule": [
+		{"sid": "an", "date": "8/24/2009 14:52:10", "seatsleft": 16, "walkin": 30}
 	]
 }

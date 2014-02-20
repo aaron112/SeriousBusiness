@@ -59,7 +59,7 @@
 
         <div data-role="header" style="overflow:hidden;">
         <a href="#" data-icon="back" data-rel="back">Back</a>
-        <h1>Select Bus Stop</h1>
+        <h1>Make Reservation</h1>
         </div><!-- /header -->
         
         <div class="contentwrap"><!---Start content-wrap---->
@@ -67,18 +67,18 @@
         <!--- Place content HERE ---->
 
         {{#if line}}
-        <p style=""><h3>Pick your start stop:</h3></p>
+        <p style=""><h3>Leaving from:</h3></p>
         <div class="btn-group">
-        {{#each busstops}}
-        <a href="javascript: window.location = encodeURI(window.location.href+'&stop={{name}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
+        {{#each result}}
+        <a href="javascript: window.location = encodeURI(window.location.href+'&beginstop={{id}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
         {{/each}}
         </div>
         {{else}}
 
         
-        <p style=""><h3>Pick a shuttle below:</h3></p>
+        <p style=""><h3>Choose a shuttle:</h3></p>
         <div class="btn-group">
-        {{#each shuttlelines}}
+        {{#each result}}
         <a href="?line={{id}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
         {{/each}}
         </div>

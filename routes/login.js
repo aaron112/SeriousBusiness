@@ -1,5 +1,3 @@
-// Get all of our friend data
-//var data = require('../data.json');
 
 exports.view = function(req, res){
 	//console.log(data);
@@ -27,9 +25,9 @@ exports.process = function(req, res){
         console.log("req.body.pid = " + req.body.pid + ", req.query.pid = " + req.query.pid);
 
         // Write a cookie
-        res.cookie('sbpid', req.body.pid);
+        res.cookie('sbpid', req.body.pid.toLowerCase());
 
         // Redirect to main page
-        res.redirect('/main');
+        res.redirect(303, '/main');
     }
 };
