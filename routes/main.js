@@ -13,6 +13,7 @@ exports.view = function(req, res){
 
         models.Reservations
             .find( {'userid': req.cookies.sbpid} )
+            .populate('sid', 'shortname')
             .populate('beginstop', 'name')
             .populate('endstop', 'name')
             .populate('schid')

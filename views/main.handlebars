@@ -31,15 +31,16 @@
 
             console.log("actionDelete("+deleteId+")");
 
-            $("body").pagecontainer("change", "/removeresv?deleteid="+deleteId, {allowSamePageTransition: true, reloadPage: true, changeHash: false});
+            $("body").pagecontainer("change", "/removeresv?deleteid="+deleteId, {allowSamePageTransition: true, reloadPage: true, changeHash: true});
         }
 
         function showLeftPanel() {
             $( "#floating" ).hide();
-            $( "#leftpanel" ).panel( "open" );
+            $( "body" ).pagecontainer( "getActivePage" ).find("#leftpanel").panel( "open" );
         }
 
         $(document).ready(function(){
+
             $( "#floating" ).click(function() {
                 $( "#floating" ).hide();
             });
@@ -122,7 +123,7 @@
                 <a href="#">
                 <h3>{{beginstop.name}}</h3>
                 <p>TO: {{endstop.name}}</p>
-                <p class="ui-li-aside"><strong>{{time}}</strong></p>
+                <p class="ui-li-aside"><strong>{{time}}</strong><br/>{{sid.shortname}}</p>
                 </a>
                 <a href="javascript: showDeleteDialog('{{id}}');">Cancel Reservation</a>
             </li>

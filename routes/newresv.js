@@ -64,7 +64,7 @@ exports.view = function(req, res){
             //
             for ( i in result ) {
                 if ( result[i]['id'] == beginstop ) {
-                    result[i]['name'] += " (Leaving From)";
+                    result[i]['name'] = "(Leaving From) "+result[i]['name'];
                 } else {
                     result[i]['clickable'] = true;
                 }

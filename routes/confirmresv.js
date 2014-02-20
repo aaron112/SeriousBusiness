@@ -17,7 +17,7 @@ exports.view = function(req, res){
 
     } else {
         models.Shuttles
-            .findOne( {'id': lineid} )
+            .findOne( {'_id': lineid} )
             .exec(shuttleDone);
 
         models.Schedule

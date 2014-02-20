@@ -1,16 +1,19 @@
 {
 	"Shuttles": [
 		{
-			"id": "an",
-			"name": "(A)(N) City Shuttle (Arriba/Nobel)"
+			"_id": "an",
+			"name": "(A)(N) City Shuttle (Arriba/Nobel)",
+			"shortname": "(A)(N)"
 		},
 		{
-			"id": "201",
-			"name": "(201) MTS Counterclockwise"
+			"_id": "201",
+			"name": "(201) MTS Counterclockwise",
+			"shortname": "(201)"
 		},
 		{
-			"id": "202",
-			"name": "(202) MTS Clockwise"
+			"_id": "202",
+			"name": "(202) MTS Clockwise",
+			"shortname": "(202)"
 		}
 	],
 
@@ -49,6 +52,67 @@
 	],
 
 	"Schedule": [
-		{"sid": "an", "date": "8/24/2009 14:52:10", "seatsleft": 16, "walkin": 30}
+        {"sid": "an", "date": "2/19/2014 6:0:00", "seatsleft": 8, "walkin": 20},
+        {"sid": "an", "date": "2/19/2014 6:15:00", "seatsleft": 1, "walkin": 30},
+        {"sid": "an", "date": "2/19/2014 6:30:00", "seatsleft": 18, "walkin": 30},
+        {"sid": "an", "date": "2/19/2014 6:45:00", "seatsleft": 11, "walkin": 30},
+        {"sid": "an", "date": "2/19/2014 7:0:00", "seatsleft": 25, "walkin": 20},
+        {"sid": "an", "date": "2/19/2014 7:15:00", "seatsleft": 24, "walkin": 30},
+        {"sid": "an", "date": "2/19/2014 7:30:00", "seatsleft": 6, "walkin": 20},
+        {"sid": "an", "date": "2/19/2014 7:45:00", "seatsleft": 11, "walkin": 30},
+        {"sid": "an", "date": "2/19/2014 8:0:00", "seatsleft": 5, "walkin": 30},
+        {"sid": "an", "date": "2/19/2014 8:15:00", "seatsleft": 3, "walkin": 20},
+        {"sid": "an", "date": "2/19/2014 8:30:00", "seatsleft": 29, "walkin": 20},
+        {"sid": "an", "date": "2/19/2014 8:45:00", "seatsleft": 26, "walkin": 20},
+        {"sid": "an", "date": "2/19/2014 9:0:00", "seatsleft": 16, "walkin": 30},
+        {"sid": "an", "date": "2/19/2014 9:15:00", "seatsleft": 24, "walkin": 30},
+        {"sid": "an", "date": "2/19/2014 9:30:00", "seatsleft": 18, "walkin": 20},
+        {"sid": "an", "date": "2/19/2014 9:45:00", "seatsleft": 13, "walkin": 20},
+        {"sid": "an", "date": "2/19/2014 10:0:00", "seatsleft": 25, "walkin": 20},
+        {"sid": "an", "date": "2/19/2014 10:15:00", "seatsleft": 0, "walkin": 30},
+        {"sid": "an", "date": "2/19/2014 10:30:00", "seatsleft": 27, "walkin": 20},
+        {"sid": "an", "date": "2/19/2014 10:45:00", "seatsleft": 13, "walkin": 30},
+
+        {"sid": "201", "date": "2/19/2014 6:0:00", "seatsleft": 16, "walkin": 20},
+        {"sid": "201", "date": "2/19/2014 6:15:00", "seatsleft": 9, "walkin": 30},
+        {"sid": "201", "date": "2/19/2014 6:30:00", "seatsleft": 20, "walkin": 20},
+        {"sid": "201", "date": "2/19/2014 6:45:00", "seatsleft": 14, "walkin": 20},
+        {"sid": "201", "date": "2/19/2014 7:0:00", "seatsleft": 17, "walkin": 30},
+        {"sid": "201", "date": "2/19/2014 7:15:00", "seatsleft": 5, "walkin": 20},
+        {"sid": "201", "date": "2/19/2014 7:30:00", "seatsleft": 12, "walkin": 30},
+        {"sid": "201", "date": "2/19/2014 7:45:00", "seatsleft": 8, "walkin": 20},
+        {"sid": "201", "date": "2/19/2014 8:0:00", "seatsleft": 22, "walkin": 20},
+        {"sid": "201", "date": "2/19/2014 8:15:00", "seatsleft": 1, "walkin": 20},
+        {"sid": "201", "date": "2/19/2014 8:30:00", "seatsleft": 25, "walkin": 20},
+        {"sid": "201", "date": "2/19/2014 8:45:00", "seatsleft": 25, "walkin": 30},
+        {"sid": "201", "date": "2/19/2014 9:0:00", "seatsleft": 9, "walkin": 30},
+        {"sid": "201", "date": "2/19/2014 9:15:00", "seatsleft": 12, "walkin": 30},
+        {"sid": "201", "date": "2/19/2014 9:30:00", "seatsleft": 16, "walkin": 30},
+        {"sid": "201", "date": "2/19/2014 9:45:00", "seatsleft": 23, "walkin": 20},
+        {"sid": "201", "date": "2/19/2014 10:0:00", "seatsleft": 14, "walkin": 30},
+        {"sid": "201", "date": "2/19/2014 10:15:00", "seatsleft": 9, "walkin": 20},
+        {"sid": "201", "date": "2/19/2014 10:30:00", "seatsleft": 11, "walkin": 20},
+        {"sid": "201", "date": "2/19/2014 10:45:00", "seatsleft": 4, "walkin": 30},
+
+        {"sid": "202", "date": "2/19/2014 6:0:00", "seatsleft": 13, "walkin": 30},
+        {"sid": "202", "date": "2/19/2014 6:15:00", "seatsleft": 4, "walkin": 20},
+        {"sid": "202", "date": "2/19/2014 6:30:00", "seatsleft": 22, "walkin": 30},
+        {"sid": "202", "date": "2/19/2014 6:45:00", "seatsleft": 2, "walkin": 30},
+        {"sid": "202", "date": "2/19/2014 7:0:00", "seatsleft": 28, "walkin": 20},
+        {"sid": "202", "date": "2/19/2014 7:15:00", "seatsleft": 0, "walkin": 30},
+        {"sid": "202", "date": "2/19/2014 7:30:00", "seatsleft": 13, "walkin": 20},
+        {"sid": "202", "date": "2/19/2014 7:45:00", "seatsleft": 6, "walkin": 30},
+        {"sid": "202", "date": "2/19/2014 8:0:00", "seatsleft": 21, "walkin": 20},
+        {"sid": "202", "date": "2/19/2014 8:15:00", "seatsleft": 20, "walkin": 20},
+        {"sid": "202", "date": "2/19/2014 8:30:00", "seatsleft": 10, "walkin": 20},
+        {"sid": "202", "date": "2/19/2014 8:45:00", "seatsleft": 8, "walkin": 20},
+        {"sid": "202", "date": "2/19/2014 9:0:00", "seatsleft": 25, "walkin": 30},
+        {"sid": "202", "date": "2/19/2014 9:15:00", "seatsleft": 4, "walkin": 30},
+        {"sid": "202", "date": "2/19/2014 9:30:00", "seatsleft": 4, "walkin": 30},
+        {"sid": "202", "date": "2/19/2014 9:45:00", "seatsleft": 29, "walkin": 20},
+        {"sid": "202", "date": "2/19/2014 10:0:00", "seatsleft": 23, "walkin": 30},
+        {"sid": "202", "date": "2/19/2014 10:15:00", "seatsleft": 7, "walkin": 20},
+        {"sid": "202", "date": "2/19/2014 10:30:00", "seatsleft": 20, "walkin": 20},
+        {"sid": "202", "date": "2/19/2014 10:45:00", "seatsleft": 17, "walkin": 30}
 	]
 }

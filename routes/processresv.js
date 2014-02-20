@@ -13,6 +13,7 @@ function createGuid()
 exports.add = function(req, res){
 
     //var addid = createGuid();
+    var sid = req.query.sid;
     var beginstop = req.query.beginstop;
     var endstop = req.query.endstop;
     var schid = req.query.schid;
@@ -29,6 +30,7 @@ exports.add = function(req, res){
 
             var newEntry = new models.Reservations({
                 'userid': req.cookies.sbpid,
+                'sid': sid,
                 'beginstop': beginstop,
                 'endstop': endstop,
                 'schid': schid
