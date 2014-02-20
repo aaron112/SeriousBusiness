@@ -71,5 +71,50 @@ body{
     -o-user-select: none;
     user-select: none;
 }
-
 /*---//End-wrap----*/
+
+
+.overlay{
+    opacity:0.8;
+    background-color:#ccc;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:3em;
+    left:0px;
+    z-index:1000;
+}
+
+
+/** bootstrap style alerts */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.alert .alert-link {
+  font-weight: bold;
+}
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+.alert > p + p {
+  margin-top: 5px;
+}
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+.alert-warning hr {
+  border-top-color: #f7e1b5;
+}
+.alert-warning .alert-link {
+  color: #66512c;
+}

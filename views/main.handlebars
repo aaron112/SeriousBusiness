@@ -33,6 +33,18 @@
 
             $("body").pagecontainer("change", "/removeresv?deleteid="+deleteId, {allowSamePageTransition: true, reloadPage: true, changeHash: false});
         }
+
+        function showLeftPanel() {
+            $( "#floating" ).hide();
+            $( "#leftpanel" ).panel( "open" );
+        }
+
+        $(document).ready(function(){
+            $( "#floating" ).click(function() {
+                $( "#floating" ).hide();
+            });
+        });
+        
         </script>
 
     </head>
@@ -43,7 +55,7 @@
         <!---start-header---->
         <div id="page">
             <div id="header">
-                <a class="navicon" href="#leftpanel"> </a>
+                <a class="navicon" href="javascript: showLeftPanel();"> </a>
                 <div class="logo"><img src="images/logo.png" alt="" /></div>
         </div>
 
@@ -119,6 +131,10 @@
 
         {{else}}
 
+        <div id="floating" class="overlay" align="left">
+        <img src="images/bg_start.png" style="floating: left"/>
+        </div>
+
         <div class="alert alert-warning">You do not have any reservations yet. Tap the top-left corner see available options.</div>
 
         {{/if}}
@@ -134,10 +150,6 @@
         </div><!---//End-slider---->
 
         </div><!---//End-wrap---->
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script type="text/javascript" src="/js/bootstrap.js"></script>
+        
     </body>
 </html>
