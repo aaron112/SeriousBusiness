@@ -55,7 +55,7 @@ exports.view = function(req, res){
 
         if ( endstop ) {
             for ( i in result )
-                result[i]['time'] = utils.toTime(new Date(result[i]['date']));
+                result[i]['time'] = utils.toTime(result[i]['date']);
             
             res.render('time', data);
 

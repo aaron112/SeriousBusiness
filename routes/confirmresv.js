@@ -1,4 +1,5 @@
 
+var utils = require('../utils');
 var models = require('../models');
 
 exports.view = function(req, res){
@@ -75,8 +76,10 @@ exports.view = function(req, res){
         data["line"] = results['shuttles']['name'];
         data["beginstop"] = results['beginstop']['name'];
         data["endstop"] = results['endstop']['name'];
+
+        var d = results['schedule']['date']
         
-        data["time"] = results['schedule']['date'];
+        data["time"] = d.toDateString() + ' ' + utils.toTime(d);
         data["schid"] = schid;
 
         res.render('confirmresv', data);

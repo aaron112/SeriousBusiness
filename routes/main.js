@@ -26,7 +26,7 @@ exports.view = function(req, res){
         var schEntry;
 
         for ( var i in userresv ) {
-            userresv[i]['time'] = utils.toTime(new Date(userresv[i].schid.date));
+            userresv[i]['time'] = utils.toTime(userresv[i].schid.date);
         }
 
         var data = {};
