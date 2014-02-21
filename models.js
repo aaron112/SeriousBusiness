@@ -10,7 +10,9 @@ exports.Shuttles = Mongoose.model('Shuttles', new Mongoose.Schema({
 
 exports.Busstops = Mongoose.model('Busstops', new Mongoose.Schema({
     "sid": {type: String, ref: 'Shuttles'},
-    "name": String
+    "stopid": String,
+    "name": String,
+    "imageurl": String
 }));
 
 exports.Schedule = Mongoose.model('Schedule', new Mongoose.Schema({

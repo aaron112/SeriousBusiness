@@ -75,8 +75,8 @@
         {{#if line}}
         <p style=""><h3>Pick a bus stop below:</h3></p>
         <div class="btn-group">
-        {{#each busstops}}
-        <a href="javascript: window.location = encodeURI('/viewcam?stop={{name}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
+        {{#each result}}
+        <a href="javascript: window.location = encodeURI('/viewcam?stop={{name}}&stopid={{stopid}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
         {{/each}}
         </div>
         {{else}}
@@ -84,7 +84,7 @@
         
         <p style=""><h3>Pick a shuttle below:</h3></p>
         <div class="btn-group">
-        {{#each shuttlelines}}
+        {{#each result}}
         <a href="?line={{id}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
         {{/each}}
         </div>

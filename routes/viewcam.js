@@ -1,5 +1,6 @@
 // Get all of our friend data
 //var data = require('../data.json');
+var models = require('../models');
 
 exports.view = function(req, res){
 	//console.log(data);
@@ -9,12 +10,20 @@ exports.view = function(req, res){
         res.redirect('/');
 
     } else {
+        var stopid = req.query.stopid;
         var stop = req.query.stop;
-        var data = {};
+        console.log("stopid = " + stopid);
+        
+        models.Busstops.find( { "stopid": stopid } ).exec(render);
 
-        data['stop'] = stop;
-
-        res.render('viewcam', data);
+        function render(err, result) {
+        	if(err) { console.log(err); res.send(500); }
+        	console.log("result = " + result);
+        	var data = {};
+        	data['stop'] = stop;
+        	data['result'] = result
+	        res.render('viewcam', data);
+    	}
     }
 };
 
