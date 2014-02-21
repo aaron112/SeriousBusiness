@@ -76,7 +76,7 @@
         <p style=""><h3>Pick a bus stop below:</h3></p>
         <div class="btn-group">
         {{#each result}}
-        <a href="javascript: window.location = encodeURI('/viewcam?stop={{name}}&stopid={{stopid}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
+        <a href="javascript: window.location = encodeURI('/viewcam?stop={{name}}&stopid={{_id}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
         {{/each}}
         </div>
         {{else}}

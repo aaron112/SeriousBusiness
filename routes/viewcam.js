@@ -14,7 +14,7 @@ exports.view = function(req, res){
         var stop = req.query.stop;
         console.log("stopid = " + stopid);
         
-        models.Busstops.find( { "stopid": stopid } ).exec(render);
+        models.Busstops.find( { "_id": stopid } ).exec(render);
 
         function render(err, result) {
         	if(err) { console.log(err); res.send(500); }
