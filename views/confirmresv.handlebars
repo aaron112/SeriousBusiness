@@ -26,32 +26,7 @@
             </div>
         </div>
 
-        <div data-role="panel" id="leftpanel" data-position="left" data-display="overlay" data-theme="b">
-            <ul data-role="listview">
-                <li data-icon="back"><a href="#" data-rel="close">Close</a></li>
-                <li>
-                    <a href="/main" rel="external">
-                        <img src="images/home-icon.png" alt="" class="ui-li-icon ui-corner-none" />
-                        Home</a>
-                </li>
-                <li>
-                    <a href="/newresv" rel="external">
-                        <img src="images/blog.png" alt="" class="ui-li-icon ui-corner-none" />
-                        Make a new reservation</a>
-                </li>
-                <li>
-                    <a href="/liveview" rel="external">
-                        <img src="images/icon.png" alt="" class="ui-li-icon ui-corner-none" />
-                        Live Bus Information</a>
-                </li>
-                <li>
-                    <a href="/process_login?logout=true" rel="external">
-                        <img src="images/return.png" alt="" class="ui-li-icon ui-corner-none" />
-                        Log-out</a>
-                </li>
-            </ul>
-                    
-        </div>
+        {{> menu}}
         <!---//End-header---->
 
         <!---start-slider (Main content)---->
