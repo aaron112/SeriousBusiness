@@ -7,6 +7,7 @@ exports.view = function(req, res){
     var rid = req.query.rid;
     var from = req.query.from;
     var to = req.query.to;
+    var plusmins = req.query.plusmins;
 
     // Check if cookie exists:
     if ( !req.cookies.sbpid ) {
@@ -26,6 +27,7 @@ exports.view = function(req, res){
             .find( {
                 'sid': rid,
                 'date': {'$gte': currTime}} )
+            .sort('_id')
             .exec(render);
     }
 
@@ -35,7 +37,6 @@ exports.view = function(req, res){
         console.log(result);
 
         for ( i in result ) {
-            result[i]['time'] = utils.toTime(result[i]['date']);
             if ( result[i]['seatsleft'] < 5 ) {
                 result[i]['color'] = 'btn-red';
             } else if ( result[i]['seatsleft'] < 20 ) {
@@ -43,6 +44,9 @@ exports.view = function(req, res){
             } else {
                 result[i]['color'] = 'btn-green';
             } 
+
+            result[i]['time'] = utils.toTime( 
+                new Date(result[i]['date'].getTime() + (plusmins*60000) ));
         }
 
         var data = {};

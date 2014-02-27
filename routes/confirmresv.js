@@ -77,7 +77,7 @@ exports.view = function(req, res){
         data["beginstop"] = results['beginstop']['name'];
         data["endstop"] = results['endstop']['name'];
 
-        var d = results['schedule']['date']
+        var d = new Date( results['schedule']['date'].getTime() + (results['beginstop']['plusmins']*60000) );
         
         data["time"] = d.toDateString() + ' ' + utils.toTime(d);
         data["schid"] = schid;

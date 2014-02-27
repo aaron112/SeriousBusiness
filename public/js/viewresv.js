@@ -1,22 +1,10 @@
-var deleteId = null;
-
 
 function showDeleteDialog(id) {
 
     console.log("showDeleteDialog("+id+")");
 
-    deleteId = id;
-
-    //$("body").pagecontainer("change", "#deleteDialog", {reloadPage: false, changeHash: false, role: "popup", allowSamePageTransition: true});
-
+    $( "#deleteButton" ).attr("href", "/removeresv?deleteid="+id);
     $( "body" ).pagecontainer( "getActivePage" ).find('#deleteDialog').popup('open', { positionTo: "window", transition: "pop" });
-}
-
-function actionDelete() {
-
-    console.log("actionDelete("+deleteId+")");
-
-    $("body").pagecontainer("change", "/removeresv?deleteid="+deleteId, {allowSamePageTransition: true, reloadPage: true, changeHash: true});
 }
 
 function showLeftPanel() {

@@ -1,5 +1,5 @@
-// Get all of our friend data
-//var data = require('../data.json');
+
+var utils = require('../utils');
 var models = require('../models');
 
 exports.view = function(req, res){
@@ -11,18 +11,40 @@ exports.view = function(req, res){
 
     } else {
         var stopid = req.query.stopid;
-        var stop = req.query.stop;
+
         console.log("stopid = " + stopid);
         
-        models.Busstops.find( { "_id": stopid } ).exec(render);
+        models.Busstops.findOne( { "_id": stopid } ).exec(onResult);
 
-        function render(err, result) {
+        function onResult(err, result) {
         	if(err) { console.log(err); res.send(500); }
         	console.log("result = " + result);
-        	var data = {};
-        	data['stop'] = stop;
-        	data['result'] = result
-	        res.render('viewcam', data);
+
+            // Fake Date
+            var currTime = new Date();
+            currTime.setDate(19);
+            currTime.setMonth(1);
+            currTime.setFullYear(2014);
+
+            models.Schedule.findOne( { 
+                "sid": result.sid,
+                'date': {'$gte': currTime} } )
+            .exec(render);
+
+            function render(err, schresult) {
+                var data = {};
+                data['result'] = result;
+
+                if ( schresult ) {
+                    var nextBus = new Date(schresult.date.getTime() + (result.plusmins*60000) )
+                    var diff = new Date( nextBus - currTime );
+
+                    data['nextBus'] = utils.toTime(nextBus);
+                    data['mindiff'] = diff.getMinutes();
+                }
+
+                res.render('viewcam', data);
+            }
     	}
     }
 };

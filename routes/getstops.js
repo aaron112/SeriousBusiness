@@ -6,6 +6,7 @@ exports.view = function(req, res){
 
     var rid = req.query.rid;
     var excl = req.query.excl;
+    var shownearest = req.query.shownearest;
 
     // Check if cookie exists:
     if ( !req.cookies.sbpid ) {
@@ -37,6 +38,9 @@ exports.view = function(req, res){
         data['result'] = result;
         data['func'] = excl?'selectTo':'selectFrom';
         data['fromto'] = excl?'To':'From';
+        data['shownearest'] = shownearest;
+
+        data['nearest'] = result[0];
 
         res.render('getstops', data);
     }

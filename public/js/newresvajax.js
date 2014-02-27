@@ -1,5 +1,5 @@
 
-var rid = null, from = null, to = null;
+var rid = null, from = null, to = null, plusmins = 0;
 
 function popup(id, action) {
 
@@ -26,6 +26,7 @@ function clear() {
 
     from = null;
     to = null;
+    plusmins = 0;
 }
 
 function showHint(hint) {
@@ -57,7 +58,7 @@ function selectRoute(id, name) {
 
     $( "#routeSelect" ).text(name);
 
-    $.get("/getstops?rid="+id, onAjaxDone);
+    $.get("/getstops?rid="+id+"&shownearest=true", onAjaxDone);
 
     function onAjaxDone(result) {
         $( ("#fromStops") ).html(result);
@@ -71,7 +72,7 @@ function selectRoute(id, name) {
     }
 }
 
-function selectFrom(id, name) {
+function selectFrom(id, name, pm) {
 
     popup('popupFrom', 'close');
 
@@ -81,6 +82,7 @@ function selectFrom(id, name) {
     clear();
 
     from = id;
+    plusmins = pm;
 
     $( "#fromSelect" ).text(name);
 
@@ -98,7 +100,7 @@ function selectFrom(id, name) {
     }
 }
 
-function selectTo(id, name) {
+function selectTo(id, name, pm) {
 
     popup('popupTo', 'close');
 
@@ -109,7 +111,7 @@ function selectTo(id, name) {
 
     $( "#toSelect" ).text(name);
 
-    $.get("/getsch?rid="+rid+"&from="+from+"&to="+to, onAjaxDone);
+    $.get("/getsch?rid="+rid+"&from="+from+"&to="+to+"&plusmins="+plusmins, onAjaxDone);
 
     function onAjaxDone(result) {
         $( ("#schedule") ).html(result);

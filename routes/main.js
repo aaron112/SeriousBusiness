@@ -14,7 +14,7 @@ exports.view = function(req, res){
         models.Reservations
             .find( {'userid': req.cookies.sbpid} )
             .populate('sid', 'shortname')
-            .populate('beginstop', 'name')
+            .populate('beginstop')
             .populate('endstop', 'name')
             .populate('schid')
             .exec(renderReservations);
@@ -26,7 +26,10 @@ exports.view = function(req, res){
         var schEntry;
 
         for ( var i in userresv ) {
-            userresv[i]['time'] = utils.toTime(userresv[i].schid.date);
+
+            userresv[i]['time'] = utils.toTime( 
+                new Date(userresv[i].schid.date.getTime() + 
+                    (userresv[i].beginstop.plusmins*60000) ));
         }
 
         var data = {};

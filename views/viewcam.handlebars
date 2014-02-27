@@ -20,10 +20,7 @@
         <div id="page">
             <div id="header">
                 <a class="navicon" href="#leftpanel"> </a>
-                <div class="logo">
-                <a href="/"><img src="images/logo.png" alt="" /></a>
-
-            </div>
+                <div class="logo"><img src="images/logo.png" alt="" /></div>
         </div>
 
 
@@ -34,7 +31,7 @@
 
         <div data-role="header" style="overflow:visible;">
         <a href="/liveview" data-icon="back">Back</a>
-        <h1 style="overflow:visible;">Live View<br>{{stop}}</h1>
+        <h1 style="overflow:visible;">Live View<br>{{result.name}}</h1>
         </div><!-- /header -->
         <br>
 
@@ -44,21 +41,14 @@
 
         <!--- Place content HERE ---->
 
-
         <ul data-role="listview" data-inset="true">
-        	{{#each result}}
-	            <li><p><img src="{{imageurl}}" style="max-width: 100%;" alt="" /></p></li>
-	            <li><h3>Current # in line: 5</h3></li>
-	            <li><h3>Next bus at: 9:03 am</h3></li>
-	            <li><h3>Estimated waiting time: 10 minutes</h3></li>
-            {{/each}}
+	        <li><p><img src="{{result.imageurl}}" style="max-width: 100%;" alt="" /></p></li>
+	        <li><h3>Current # in line: {{result.inline}}</h3></li>
+	        <li><h3>Next bus at: {{#if nextBus}}{{nextBus}}{{else}}Unknown{{/if}}</h3></li>
+	        <li><h3>{{#if mindiff}}Estimated waiting time: {{mindiff}} minutes{{else}}Unknown{{/if}}</h3></li>
         </ul>
         </div><!---End content-wrap---->
 
-
-
-
-        
         <div data-role="footer" style="overflow:hidden;">
         <h1>Copyright 2014 SeriousBusiness</h1>
         </div><!-- /footer -->
