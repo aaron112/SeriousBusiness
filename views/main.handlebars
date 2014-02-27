@@ -11,42 +11,7 @@
         <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
         <script type="text/javascript" src="js/sb.js"></script>
 
-        <script type="text/javascript">
-
-        var deleteId = null;
-
-
-        function showDeleteDialog(id) {
-
-            console.log("showDeleteDialog("+id+")");
-
-            deleteId = id;
-
-            //$("body").pagecontainer("change", "#deleteDialog", {reloadPage: false, changeHash: false, role: "popup", allowSamePageTransition: true});
-
-            $( "body" ).pagecontainer( "getActivePage" ).find('#deleteDialog').popup('open', { positionTo: "window", transition: "pop" });
-        }
-
-        function actionDelete() {
-
-            console.log("actionDelete("+deleteId+")");
-
-            $("body").pagecontainer("change", "/removeresv?deleteid="+deleteId, {allowSamePageTransition: true, reloadPage: true, changeHash: true});
-        }
-
-        function showLeftPanel() {
-            $( "#floating" ).hide();
-            $( "body" ).pagecontainer( "getActivePage" ).find("#leftpanel").panel( "open" );
-        }
-
-        $(document).ready(function(){
-
-            $( "#floating" ).click(function() {
-                $( "#floating" ).hide();
-            });
-        });
-        
-        </script>
+        <script type="text/javascript" src="js/viewresv.js"></script>
 
     </head>
     <body>
@@ -56,7 +21,7 @@
         <!---start-header---->
         <div id="page">
             <div id="header">
-                <a class="navicon" href="javascript: showLeftPanel();"> </a>
+                <a class="navicon" href="#"> </a>
                 <div class="logo"><img src="images/logo.png" alt="" /></div>
         </div>
 
@@ -104,6 +69,9 @@
             </li>
             {{/each}}
         </ul>
+
+        <div class="alert alert-warning"><button class="ui-btn ui-btn-a ui-corner-all" onclick="window.location='/newresv'">Make another reservation</button>
+        </div>
 
         {{else}}
 

@@ -23,7 +23,7 @@ for ( my $i = $start_hour; $i < $end_hour; $i++ ) {
         print "        {\"sid\": \"".$sid.
         "\", \"date\": \"".$day.
         " ".$i.":".$j.
-        ":00\", \"seatsleft\": ".int(rand(30)).
+        ":00 PST\", \"seatsleft\": ".int(rand(30)).
         ", \"walkin\": ".(int(rand(2))==0?30:20)."},\n";
     }
 }

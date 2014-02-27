@@ -12,7 +12,11 @@ var mongoose = require('mongoose');
 
 var login = require('./routes/login');
 var main = require('./routes/main');
+
 var newresv = require('./routes/newresv');
+var getstops = require('./routes/getstops');
+var getsch = require('./routes/getsch');
+
 var liveview = require('./routes/liveview');
 var viewcam = require('./routes/viewcam');
 
@@ -57,6 +61,9 @@ app.get('/process_login', login.process);
 app.get('/main', main.view);
 
 app.get('/newresv', newresv.view);
+app.get('/getstops', getstops.view);
+app.get('/getsch', getsch.view);
+
 app.get('/confirmresv', confirmresv.view);
 
 app.get('/liveview', liveview.view);

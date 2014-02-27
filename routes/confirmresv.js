@@ -3,9 +3,9 @@ var utils = require('../utils');
 var models = require('../models');
 
 exports.view = function(req, res){
-    var lineid = req.query.line;
-    var beginstop = req.query.beginstop;
-    var endstop = req.query.endstop;
+    var lineid = req.query.rid;
+    var beginstop = req.query.from;
+    var endstop = req.query.to;
     var schid = req.query.schid;
 
     var results = {};

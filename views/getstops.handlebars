@@ -1,0 +1,6 @@
+<li data-role="list-divider">Current Location</li>
+<li><a href="#">The closest one</a></li>
+<li data-role="list-divider">{{fromto}}</li>
+{{#each result}}
+<li><a href="javascript: {{../func}}('{{_id}}', '{{name}}');">{{name}}</a></li>
+{{/each}}

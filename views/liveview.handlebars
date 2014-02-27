@@ -34,13 +34,8 @@
 
         <div data-role="header" style="overflow:hidden;">
 
-        {{#if line}}
-        <a href="/liveview" data-icon="back">Back</a>
-        <h1>Selete Bus Stop</h1>
-        {{else}}
-        <a href="/" data-icon="back">Back</a>
+        <a href="/" data-icon="back" rel="external">Back</a>
         <h1>Live View</h1>
-        {{/if}}
         </div><!-- /header -->
 
         <div class="contentwrap"><!---Start content-wrap---->
@@ -57,7 +52,7 @@
         {{else}}
 
         
-        <p style=""><h3>Pick a shuttle below:</h3></p>
+        <p style=""><h3>Pick a route below:</h3></p>
         <div class="btn-group">
         {{#each result}}
         <a href="?line={{id}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>

@@ -11,6 +11,8 @@
         <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
         <script type="text/javascript" src="js/sb.js"></script>
 
+        <script type="text/javascript" src="js/newresvajax.js"></script>
+
     </head>
     <body>
         <!---start-wrap---->
@@ -20,10 +22,7 @@
         <div id="page">
             <div id="header">
                 <a class="navicon" href="#leftpanel"> </a>
-                <div class="logo">
-                <a href="/"><img src="images/logo.png" alt="" /></a>
-
-            </div>
+                <div class="logo"><img src="images/logo.png" alt="" /></div>
         </div>
 
         {{> menu}}
@@ -32,39 +31,58 @@
         <!---start-slider (Main content)---->
         <div class="slider">
 
-        <div data-role="header" style="overflow:hidden;">
-        <a href="#" data-icon="back" data-rel="back">Back</a>
-        <h1>Make Reservation</h1>
+        <div data-role="header" style="overflow:visible;">
+        <a href="/" data-icon="back" rel="external">Back</a>
+        <h1 style="overflow:visible;">New Reservation</h1>
         </div><!-- /header -->
-        
+
+        <!-- BEGIN Popups -->
+        <div data-role="popup" id="popupRoute" data-theme="b" data-overlay-theme="b">
+            <ul data-role="listview" data-inset="true" style="min-width:210px;">
+                <li data-role="list-divider">Select a route</li>
+                {{#each result}}
+                <li><a href="javascript: selectRoute('{{_id}}', '{{name}}');">{{name}}</a></li>
+                {{/each}}
+            </ul>
+        </div><!-- /popupRoute -->
+
+        <div data-role="popup" id="popupFrom" data-theme="b" data-overlay-theme="b">
+            <ul id="fromStops" data-role="listview" data-inset="true" style="min-width:210px;">
+            <!-- Populated by AJAX -->
+            </ul>
+        </div><!-- /popupFrom -->
+
+        <div data-role="popup" id="popupTo" data-theme="b" data-overlay-theme="b">
+            <ul id="toStops" data-role="listview" data-inset="true" style="min-width:210px;">
+            <!-- Populated by AJAX -->
+            </ul>
+        </div><!-- /popupTo -->
+        <!-- END Popups -->
+
         <div class="contentwrap"><!---Start content-wrap---->
 
         <!--- Place content HERE ---->
 
-        {{#if line}}
-        <p style=""><h3>Leaving from:</h3></p>
-        <div class="btn-group">
-        {{#each result}}
-        <a href="javascript: window.location = encodeURI(window.location.href+'&beginstop={{id}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
-        {{/each}}
-        </div>
-        {{else}}
+        <a href="javascript: popup('popupRoute', 'open');" id="routeSelect" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow btn-green">Shuttle Route</a>
+        <a href="javascript: popup('popupFrom', 'open');" id="fromSelect" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">&nbsp;</a>
+        <a href="javascript: popup('popupTo', 'open');" id="toSelect" class="ui-btn-b ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow">&nbsp;</a>
+        <br>
+        <ul id="schedule" data-role="listview" data-inset="true" data-split-icon="right" data-theme="a" data-count-theme="a">
+            <!-- Populated by AJAX -->
+            <li><h3>Select shuttle route to begin.</h3></li>
+        </ul>
 
-        
-        <p style=""><h3>Choose a shuttle:</h3></p>
-        <div class="btn-group">
-        {{#each result}}
-        <a href="?line={{id}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
-        {{/each}}
-        </div>
 
-        {{/if}}
 
         </div><!---End content-wrap---->
 
+
+
+
+        
         <div data-role="footer" style="overflow:hidden;">
         <h1>Copyright 2014 SeriousBusiness</h1>
-        </div><!-- /header -->
+        </div><!-- /footer -->
         <br>
 
         </div><!---//End-slider---->

@@ -136,3 +136,18 @@ body{
 .alert-warning .alert-link {
   color: #66512c;
 }
+
+.btn-green {
+  border-color: #d6e9c6 !important;
+  background-color: #dff0d8 !important;
+}
+
+.btn-red {
+  background-color: #f2dede !important;
+  border-color: #eed3d7 !important;
+}
+
+.btn-yellow {
+  background-color: #fcf8e3 !important;
+  border-color: #fbeed5 !important;
+}
