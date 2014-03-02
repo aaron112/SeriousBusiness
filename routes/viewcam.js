@@ -5,6 +5,8 @@ var models = require('../models');
 exports.view = function(req, res){
 	//console.log(data);
 
+    var popup = req.query.popup;
+
     // Check if cookie exists:
     if ( !req.cookies.sbpid ) {
         res.redirect('/');
@@ -43,7 +45,10 @@ exports.view = function(req, res){
                     data['mindiff'] = diff.getMinutes();
                 }
 
-                res.render('viewcam', data);
+                if ( popup )
+                    res.render('stopdetails', data);
+                else
+                    res.render('viewcam', data);
             }
     	}
     }

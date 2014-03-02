@@ -1,6 +1,15 @@
 
 var rid = null, from = null, to = null, plusmins = 0;
 
+var lastPopup = null;
+
+$(document).ready(function() {
+    setTimeout(function(){
+        popup('popupRoute', 'open');
+    },300);
+    
+});
+
 function popup(id, action) {
 
     if ( action == 'open' ) {
@@ -60,13 +69,15 @@ function selectRoute(id, name) {
     if ( rid == id )
         return;
 
-    clear();
-
-    rid = id;
-
-    $( "#routeSelect" ).text(name);
-
-    $.get("/getstops?rid="+id+"&shownearest=true", onAjaxDone);
+    $('#popupRoute').bind({
+        popupafterclose: function(event, ui) {
+            clear();
+            rid = id;
+            $( "#routeSelect" ).text(name);
+            $.get("/getstops?rid="+id+"&shownearest=true", onAjaxDone);
+            $('#popupRoute').unbind();
+        }
+    });
 
     function onAjaxDone(result) {
         $( ("#fromStops") ).html(result);
@@ -77,6 +88,8 @@ function selectRoute(id, name) {
         showHint("Next, select your origin stop.");
         turnBlack('#routeSelect');
         turnGreen('#fromSelect');
+
+        popup('popupFrom', 'open');
     }
 }
 
@@ -87,14 +100,22 @@ function selectFrom(id, name, pm) {
     if ( from == id )
         return;
 
-    clear();
 
-    from = id;
-    plusmins = pm;
+    $('#popupFrom').bind({
+        popupafterclose: function(event, ui) {
+            clear();
 
-    $( "#fromSelect" ).text(name);
+            from = id;
+            plusmins = pm;
 
-    $.get("/getstops?rid="+rid+"&excl="+id, onAjaxDone);
+            $( "#fromSelect" ).text(name);
+
+            $.get("/getstops?rid="+rid+"&excl="+id, onAjaxDone);
+            
+            $('#popupFrom').unbind();
+        }
+    });
+    
 
     function onAjaxDone(result) {
         $( ("#toStops") ).html(result);
@@ -105,6 +126,8 @@ function selectFrom(id, name, pm) {
         showHint("Finally, select your destination.");
         turnBlack('#fromSelect');
         turnGreen('#toSelect');
+
+        popup('popupTo', 'open');
     }
 }
 
@@ -129,4 +152,42 @@ function selectTo(id, name, pm) {
         
         turnBlack('#toSelect');
     }
+}
+
+function showDetails(id, popupId) {
+
+    lastPopup = popupId;
+
+    popup(popupId, 'close');
+
+    $( '#'+popupId ).bind({
+        popupafterclose: function(event, ui) {
+            $.get("/viewcam?popup=true&stopid="+id, onAjaxDone);
+            $( '#'+popupId ).unbind();
+        }
+    });
+
+    function onAjaxDone(result) {
+        console.log("onAjaxDone()");
+
+
+        $('#popupDetails').html(result);
+        $('#popupDetails').trigger('create');
+
+        $('#popupDetails').bind({
+            popupafterclose: function(event, ui) {
+                restoreLastPopup();
+                $('#popupDetails').unbind();
+            }
+        });
+
+        popup('popupDetails', 'open');
+    }
+}
+
+function restoreLastPopup() {
+    if ( lastPopup == null )
+        return;
+
+    popup(lastPopup, 'open');
 }

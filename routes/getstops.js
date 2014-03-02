@@ -37,7 +37,8 @@ exports.view = function(req, res){
         var data = {};
         data['result'] = result;
         data['func'] = excl?'selectTo':'selectFrom';
-        data['fromto'] = excl?'To':'From';
+        data['popupId'] = excl?'popupTo':'popupFrom';
+        data['dividerTitle'] = excl?'To Where?':'From Where?';
         data['shownearest'] = shownearest;
 
         data['nearest'] = result[0];

@@ -1,8 +1,14 @@
 {{#if shownearest}}
 <li data-role="list-divider">Nearby Stops</li>
-<li><a href="javascript: {{../func}}('{{nearest._id}}', '{{nearest.name}}', {{nearest.plusmins}});">{{nearest.name}}</a></li>
+<li>
+<a href="javascript: {{../func}}('{{nearest._id}}', '{{nearest.name}}', {{nearest.plusmins}});">{{nearest.name}}</a>
+<a href="javascript: showDetails('{{nearest._id}}', '{{popupId}}');">Purchase album</a>
+</li>
 {{/if}}
-<li data-role="list-divider">{{fromto}}</li>
+<li data-role="list-divider">{{dividerTitle}}</li>
 {{#each result}}
-<li><a href="javascript: {{../func}}('{{_id}}', '{{name}}', {{plusmins}});">{{name}}</a></li>
+<li>
+<a href="javascript: {{../func}}('{{_id}}', '{{name}}', {{plusmins}});">{{name}}</a>
+<a href="javascript: showDetails('{{_id}}', '{{../popupId}}');">Purchase album</a>
+</li>
 {{/each}}

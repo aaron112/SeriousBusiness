@@ -5,6 +5,7 @@ var models = require('../models');
 exports.view = function(req, res){
 
     // A/B test
+    // No longer need this (Handled by Google Analytics)
     //if ( Math.floor((Math.random()*100)+1) % 2 == 0 ) {
     //    res.redirect('/newresv-old');
     //}

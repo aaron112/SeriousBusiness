@@ -22,12 +22,6 @@
         <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
         <link href="css/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css" media="all" />
 
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
-        <script type="text/javascript" src="js/sb.js"></script>
-
-        <script type="text/javascript" src="js/newresvajax.js"></script>
-
     </head>
     <body>
         <!---start-wrap---->
@@ -62,16 +56,21 @@
         </div><!-- /popupRoute -->
 
         <div data-role="popup" id="popupFrom" data-theme="b" data-overlay-theme="b">
-            <ul id="fromStops" data-role="listview" data-inset="true" style="min-width:210px;">
+            <ul id="fromStops" data-role="listview" data-split-icon="camera" data-inset="true" style="min-width:210px;">
             <!-- Populated by AJAX -->
             </ul>
         </div><!-- /popupFrom -->
 
         <div data-role="popup" id="popupTo" data-theme="b" data-overlay-theme="b">
-            <ul id="toStops" data-role="listview" data-inset="true" style="min-width:210px;">
+            <ul id="toStops" data-role="listview" data-split-icon="camera" data-inset="true" style="min-width:210px;">
             <!-- Populated by AJAX -->
             </ul>
         </div><!-- /popupTo -->
+
+        <div data-role="popup" id="popupDetails" data-overlay-theme="b" data-theme="a" data-dismissible="true" style="max-width:400px;">
+            <!-- Populated by AJAX -->
+        </div><!-- /popupDetails -->
+
         <!-- END Popups -->
 
         <div class="contentwrap"><!---Start content-wrap---->
@@ -100,6 +99,11 @@
 
         <!-- Google Analytics -->
         {{> ga}}
+        
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
+        <script type="text/javascript" src="js/sb.js"></script>
+        <script type="text/javascript" src="js/newresvajax.js"></script>
         
     </body>
 </html>
