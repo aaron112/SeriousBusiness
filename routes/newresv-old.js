@@ -65,6 +65,8 @@ exports.view = function(req, res){
         data['endstop'] = endstop;
         data['result'] = result;
 
+        data['showga'] = !line;
+
         if ( endstop ) {
             for ( i in result ) 
                 result[i]['time'] = utils.toTime( 

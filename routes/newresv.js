@@ -5,9 +5,9 @@ var models = require('../models');
 exports.view = function(req, res){
 
     // A/B test
-    if ( Math.floor((Math.random()*100)+1) % 2 == 0 ) {
-        res.redirect('/newresv-old');
-    }
+    //if ( Math.floor((Math.random()*100)+1) % 2 == 0 ) {
+    //    res.redirect('/newresv-old');
+    //}
 
     // Check if cookie exists:
     if ( !req.cookies.sbpid ) {
