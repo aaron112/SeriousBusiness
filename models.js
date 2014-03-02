@@ -15,7 +15,9 @@ exports.Busstops = Mongoose.model('Busstops', new Mongoose.Schema({
     "imageurl": String,
     "inline": Number,
     "waittime": Number,
-    "plusmins": Number
+    "plusmins": Number,
+    "long": Number,
+    "lat": Number
 }));
 
 exports.Schedule = Mongoose.model('Schedule', new Mongoose.Schema({

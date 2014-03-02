@@ -20,6 +20,7 @@ var getsch = require('./routes/getsch');
 
 var liveview = require('./routes/liveview');
 var viewcam = require('./routes/viewcam');
+var viewmap = require('./routes/viewmap');
 
 var processresv = require('./routes/processresv');
 var confirmresv = require('./routes/confirmresv');
@@ -70,6 +71,7 @@ app.get('/confirmresv', confirmresv.view);
 
 app.get('/liveview', liveview.view);
 app.get('/viewcam', viewcam.view);
+app.get('/viewmap', viewmap.view);
 
 app.get('/addresv', processresv.add);
 app.get('/removeresv', processresv.remove);

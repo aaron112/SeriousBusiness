@@ -6,6 +6,7 @@ exports.view = function(req, res){
 	//console.log(data);
 
     var popup = req.query.popup;
+    var popupid = req.query.popupid;
 
     // Check if cookie exists:
     if ( !req.cookies.sbpid ) {
@@ -36,6 +37,7 @@ exports.view = function(req, res){
             function render(err, schresult) {
                 var data = {};
                 data['result'] = result;
+                data['popupid'] = popupid;
 
                 if ( schresult ) {
                     var nextBus = new Date(schresult.date.getTime() + (result.plusmins*60000) )

@@ -5,6 +5,8 @@ var models = require('../models');
 exports.view = function(req, res){
 	//console.log(data);
 
+    var shownBefore = req.cookies.shownbefore;
+
     // Check if cookie exists:
     if ( !req.cookies.sbpid ) {
         res.redirect('/');
@@ -33,6 +35,12 @@ exports.view = function(req, res){
         }
 
         var data = {};
+
+        if ( !shownBefore ) {
+            res.cookie('shownbefore', true);
+            data['showOverlay'] = true;
+        }
+
         data['myreserv'] = userresv;
 
         if ( userresv != undefined )

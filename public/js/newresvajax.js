@@ -3,10 +3,22 @@ var rid = null, from = null, to = null, plusmins = 0;
 
 var lastPopup = null;
 
+var currLoc = null;
+
 $(document).ready(function() {
     setTimeout(function(){
         popup('popupRoute', 'open');
     },300);
+
+    if ("geolocation" in navigator) {
+        console.log(" geolocation is available");
+        navigator.geolocation.getCurrentPosition(function(position) {
+            currLoc = position;
+        });
+
+    } else {
+        console.log(" geolocation is NOT available");
+    }
     
 });
 
@@ -69,12 +81,19 @@ function selectRoute(id, name) {
     if ( rid == id )
         return;
 
+    var lat = 0;
+    var lon = 0;
+    if ( currLoc ) {
+        lat = currLoc.coords.latitude;
+        lon = currLoc.coords.longitude;
+    }
+
     $('#popupRoute').bind({
         popupafterclose: function(event, ui) {
             clear();
             rid = id;
             $( "#routeSelect" ).text(name);
-            $.get("/getstops?rid="+id+"&shownearest=true", onAjaxDone);
+            $.get("/getstops?rid="+id+((currLoc)?("&shownearest=true&lat="+lat+"&lon="+lon):""), onAjaxDone);
             $('#popupRoute').unbind();
         }
     });
@@ -100,7 +119,6 @@ function selectFrom(id, name, pm) {
     if ( from == id )
         return;
 
-
     $('#popupFrom').bind({
         popupafterclose: function(event, ui) {
             clear();
@@ -115,7 +133,6 @@ function selectFrom(id, name, pm) {
             $('#popupFrom').unbind();
         }
     });
-    
 
     function onAjaxDone(result) {
         $( ("#toStops") ).html(result);
@@ -154,11 +171,14 @@ function selectTo(id, name, pm) {
     }
 }
 
-function showDetails(id, popupId) {
+function showDetails(id, popupId, view) {
+
+    var viewurl = view=='map'?'viewmap':'viewcam';
 
     lastPopup = popupId;
 
     popup(popupId, 'close');
+    $.mobile.showPageLoadingMsg(true);
 
     $( '#'+popupId ).bind({
         popupafterclose: function(event, ui) {
@@ -182,7 +202,63 @@ function showDetails(id, popupId) {
         });
 
         popup('popupDetails', 'open');
+        $.mobile.hidePageLoadingMsg();
     }
+}
+
+
+function showDetails(id, popupId) {
+
+    lastPopup = popupId;
+
+    popup(popupId, 'close');
+
+    $( '#'+popupId ).bind({
+        popupafterclose: function(event, ui) {
+            $.get("/viewcam?popup=true&popupid=popupDetails&stopid="+id, onAjaxDone);
+            $( '#'+popupId ).unbind();
+        }
+    });
+
+    function onAjaxDone(result) {
+        console.log("onAjaxDone()");
+
+
+        $('#popupDetails').html(result);
+        $('#popupDetails').trigger('create');
+
+        $('#popupDetails').bind({
+            popupafterclose: function(event, ui) {
+                restoreLastPopup();
+                $('#popupDetails').unbind();
+            }
+        });
+
+        popup('popupDetails', 'open');
+    }
+}
+
+
+function showMap(id, popupId) {
+
+    //lastPopup = popupId;
+     $('#'+popupId).unbind();
+    popup(popupId, 'close');
+
+    $( '#'+popupId ).bind({
+        popupafterclose: function(event, ui) {
+            $('#popupDetails').html('<a href="#" data-rel="back" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><iframe src="/viewmap?stopid='+id+'" width="270" height="400" seamless></iframe>');
+            $( '#'+popupId ).unbind();
+
+            $('#popupDetails').bind({
+                popupafterclose: function(event, ui) {
+                    restoreLastPopup();
+                    $('#popupDetails').unbind();
+                }
+            });
+            popup('popupDetails', 'open');
+        }
+    });
 }
 
 function restoreLastPopup() {

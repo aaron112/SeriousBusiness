@@ -18,24 +18,167 @@
 	],
 
 	"Busstops": [
-		{"sid": "an", "name": "Regents & Nobel", "imageurl": "images/liveview/nobelregents.jpg", "inline": 30, "waittime": 30, "plusmins": 8},
-		{"sid": "an", "name": "Arriba & Regents", "imageurl": "images/liveview/arribaregents.png", "inline": 3, "waittime": 10, "plusmins": 10},
-		{"sid": "an", "name": "Lebon & Palmilla", "imageurl": "images/liveview/lebonpalmilla.jpg", "inline": 36, "waittime": 40, "plusmins": 12},
-		{"sid": "an", "name": "Nobel & Lebon", "imageurl": "images/liveview/nobellebon.png", "inline": 2, "waittime": 10, "plusmins": 13},
-		{"sid": "an", "name": "Mandeville Auditorium", "imageurl": "images/liveview/mandeville.jpg", "inline": 0, "waittime": 6, "plusmins": 0},
+		{
+                        "sid": "an", 
+                        "name": "Regents & Nobel",
+                        "imageurl": "images/liveview/nobelregents.jpg", 
+                        "inline": 30, 
+                        "waittime": 30, 
+                        "plusmins": 8, 
+                        "lat": 32.8672287956025,
+                        "long": -117.21936285495804
+                },
+		{
+                        "sid": "an", 
+                        "name": "Arriba & Regents", 
+                        "imageurl": "images/liveview/arribaregents.png", 
+                        "inline": 3, 
+                        "waittime": 10, 
+                        "plusmins": 10, 
+                        "lat": 32.86144956635956,
+                        "long": -117.22339696693422
+                },
+		{
+                        "sid": "an", 
+                        "name": "Lebon & Palmilla", 
+                        "imageurl": "images/liveview/lebonpalmilla.jpg", 
+                        "inline": 36, 
+                        "waittime": 40, 
+                        "plusmins": 12, 
+                        "lat": 32.86510102119309,
+                        "long": -117.22504827976228
+                },
+		{
+                        "sid": "an", 
+                        "name": "Nobel & Lebon", 
+                        "imageurl": "images/liveview/nobellebon.png", 
+                        "inline": 2, 
+                        "waittime": 10, 
+                        "plusmins": 13, 
+                        "lat": 32.868526438595424,
+                        "long": -117.2252905368801},
+		{
+                        "sid": "an", 
+                        "name": "Mandeville Auditorium", 
+                        "imageurl": "images/liveview/mandeville.jpg", 
+                        "inline": 0, 
+                        "waittime": 6, 
+                        "plusmins": 0, 
+                        "lat": 32.8782441269704,
+                        "long": -117.23928967857398
+                },
 
-		{"sid": "c", "name": "Lot P701", "imageurl": "images/liveview/p701.png", "inline": 0, "waittime": 5, "plusmins": 0},
-                {"sid": "c", "name": "Thornton Hospital", "imageurl": "images/liveview/thornton.png", "inline": 0, "waittime": 7, "plusmins": 5},
-                {"sid": "c", "name": "Sorrento Valley Coaster Station", "imageurl": "images/liveview/coaster.png", "inline": 0, "waittime": 8, "plusmins": 15},
-                {"sid": "c", "name": "Gilman & Osler (Med School side)", "imageurl": "images/liveview/gilmanosler.png", "inline": 0, "waittime": 6, "plusmins": 25},
-                {"sid": "c", "name": "Gilman & Mandeville Lane (Med School side)", "imageurl": "images/liveview/busstop.png", "inline": 5, "waittime": 10, "plusmins": 27},
-                {"sid": "c", "name": "Gilman & Myers (Eastbound/Med School side)", "imageurl": "images/liveview/busstop.png", "inline": 5, "waittime": 10, "plusmins": 28},
+		{
+                        "sid": "c", 
+                        "name": "Lot P701", 
+                        "imageurl": "images/liveview/p701.png", 
+                        "inline": 0, 
+                        "waittime": 5, 
+                        "plusmins": 0,
+                        "lat": 32.8820469288637,
+                        "long": -117.22741484642
+                },
+                {
+                        "sid": "c",
+                        "name": "Thornton Hospital",
+                        "imageurl": "images/liveview/thornton.png",
+                        "inline": 0,
+                        "waittime": 7,
+                        "plusmins": 5,
+                        "lat": 32.8796592547932,
+                        "long": -117.22386360168504
+                },
+                {
+                        "sid": "c",
+                        "name": "Sorrento Valley Coaster Station",
+                        "imageurl": "images/liveview/coaster.png",
+                        "inline": 0,
+                        "waittime": 8,
+                        "plusmins": 15,
+                        "lat": 32.9021844203712,
+                        "long": -117.22520068287798
+                },
+                {
+                        "sid": "c",
+                        "name": "Gilman & Osler (Med School side)",
+                        "imageurl": "images/liveview/gilmanosler.png",
+                        "inline": 0,
+                        "waittime": 6,
+                        "plusmins": 25,
+                        "lat": 32.8743520809355,
+                        "long": -117.23825365304998
+                },
+                {
+                        "sid": "c",
+                        "name": "Gilman & Mandeville Lane (Med School side)",
+                        "imageurl": "images/liveview/busstop.png",
+                        "inline": 5,
+                        "waittime": 10,
+                        "plusmins": 27,
+                        "lat": 32.8768254977606,
+                        "long": -117.23837167024703
+                },
+                {
+                        "sid": "c",
+                        "name": "Gilman & Myers (Eastbound/Med School side)",
+                        "imageurl": "images/liveview/busstop.png",
+                        "inline": 5,
+                        "waittime": 10,
+                        "plusmins": 28,
+                        "lat": 32.876969102492,
+                        "long": -117.235547304153
+                },
 
-                {"sid": "h", "name": "Thornton Hospital", "imageurl": "images/liveview/thornton.png", "inline": 0, "waittime": 9, "plusmins": 0},
-                {"sid": "h", "name": "Gilman & Myers (Westbound/Price Center side)", "imageurl": "images/liveview/busstop.png", "inline": 5, "waittime": 7, "plusmins": 3},
-                {"sid": "h", "name": "Old Town Transit Ctr (to Hillcrest)", "imageurl": "images/liveview/oldtown.png", "inline": 0, "waittime": 0, "plusmins": 20},
-                {"sid": "h", "name": "Hillcrest", "imageurl": "images/liveview/hillcrest.png", "inline": 1, "waittime": 10, "plusmins": 27},
-                {"sid": "h", "name": "Gilman & Myers (Eastbound/Med School side)", "imageurl": "images/liveview/busstop.png", "inline": 5, "waittime": 20, "plusmins": 35}
+                {
+                        "sid": "h",
+                        "name": "Thornton Hospital",
+                        "imageurl": "images/liveview/thornton.png",
+                        "inline": 0,
+                        "waittime": 9,
+                        "plusmins": 0,
+                        "lat": 32.8797020532908,
+                        "long": -117.223890423775
+                },
+                {
+                        "sid": "h",
+                        "name": "Gilman & Myers (Westbound/Price Center side)",
+                        "imageurl": "images/liveview/busstop.png",
+                        "inline": 5,
+                        "waittime": 7,
+                        "plusmins": 3,
+                        "lat": 32.8771273490051,
+                        "long": -117.23581016063702
+                },
+                {
+                        "sid": "h",
+                        "name": "Old Town Transit Ctr (to Hillcrest)",
+                        "imageurl": "images/liveview/oldtown.png",
+                        "inline": 0,
+                        "waittime": 0,
+                        "plusmins": 20,
+                        "lat": 32.7550924416179,
+                        "long": -117.19908133149102
+                },
+                {
+                        "sid": "h",
+                        "name": "Hillcrest",
+                        "imageurl": "images/liveview/hillcrest.png",
+                        "inline": 1,
+                        "waittime": 10,
+                        "plusmins": 27,
+                        "lat": 32.7542860204092,
+                        "long": -117.167087942362
+                },
+                {
+                        "sid": "h",
+                        "name": "Gilman & Myers (Eastbound/Med School side)",
+                        "imageurl": "images/liveview/busstop.png",
+                        "inline": 5,
+                        "waittime": 20,
+                        "plusmins": 35,
+                        "lat": 32.876969102492,
+                        "long": -117.235547304153
+                }
 	],
 
 	"Schedule": [
