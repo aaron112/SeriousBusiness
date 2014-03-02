@@ -36,13 +36,21 @@ function showHint(hint) {
 }
 
 function turnBlack(id) {
+    $(id).removeClass('ui-btn-a');
     $(id).removeClass('btn-green');
     $(id).addClass('ui-btn-b');
 }
 
 function turnGreen(id) {
+    $(id).removeClass('ui-btn-a');
     $(id).removeClass('ui-btn-b');
     $(id).addClass('btn-green');
+}
+
+function turnWhite(id) {
+    $(id).removeClass('btn-green');
+    $(id).removeClass('ui-btn-b');
+    $(id).addClass('ui-btn-a');
 }
 
 function selectRoute(id, name) {
