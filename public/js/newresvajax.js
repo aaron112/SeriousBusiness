@@ -8,7 +8,8 @@ var currLoc = null;
 $(document).ready(function() {
     setTimeout(function(){
         popup('popupRoute', 'open');
-    },300);
+    },250);
+
 
     if ("geolocation" in navigator) {
         console.log(" geolocation is available");
@@ -107,6 +108,7 @@ function selectRoute(id, name) {
         showHint("Next, select your origin stop.");
         turnBlack('#routeSelect');
         turnGreen('#fromSelect');
+        turnWhite('#toSelect');
 
         popup('popupFrom', 'open');
     }
