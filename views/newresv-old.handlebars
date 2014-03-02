@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Serious BUS-iness</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css" media="all" />
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
+        <script type="text/javascript" src="js/sb.js"></script>
+
+    </head>
+    <body>
+        <!---start-wrap---->
+        <div id="page-wrap" class="wrap" data-role="page">
+
+        <!---start-header---->
+        <div id="page">
+            <div id="header">
+                <a class="navicon" href="#leftpanel"> </a>
+                <div class="logo"><img src="images/logo.png" alt="" /></div>
+        </div>
+
+        {{> menu}}
+        <!---//End-header---->
+
+        <!---start-slider (Main content)---->
+        <div class="slider">
+
+        <div data-role="header" style="overflow:hidden;">
+        <a href="#" data-icon="back" data-rel="back">Back</a>
+        <h1>Make Reservation</h1>
+        </div><!-- /header -->
+        
+        <div class="contentwrap"><!---Start content-wrap---->
+
+        <!--- Place content HERE ---->
+
+        {{#if line}}
+        <p style=""><h3>Leaving from:</h3></p>
+        <div class="btn-group">
+        {{#each result}}
+        <a href="javascript: window.location = encodeURI(window.location.href+'&beginstop={{id}}&plusmins={{plusmins}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
+        {{/each}}
+        </div>
+        {{else}}
+
+        
+        <p style=""><h3>Choose a shuttle:</h3></p>
+        <div class="btn-group">
+        {{#each result}}
+        <a href="?line={{id}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
+        {{/each}}
+        </div>
+
+        {{/if}}
+
+        </div><!---End content-wrap---->
+
+        <div data-role="footer" style="overflow:hidden;">
+        <h1>Copyright 2014 SeriousBusiness</h1>
+        </div><!-- /header -->
+        <br>
+
+        </div><!---//End-slider---->
+
+        </div><!---//End-wrap---->
+        
+    </body>
+</html>

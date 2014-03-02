@@ -4,9 +4,10 @@ var models = require('../models');
 
 exports.view = function(req, res){
 
-    var line = req.query.line;
-    var beginstop = req.query.beginstop;
-    var endstop = req.query.endstop;
+    // A/B test
+    if ( Math.floor((Math.random()*100)+1) % 2 == 0 ) {
+        res.redirect('/newresv-old');
+    }
 
     // Check if cookie exists:
     if ( !req.cookies.sbpid ) {
