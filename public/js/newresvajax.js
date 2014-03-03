@@ -8,7 +8,7 @@ var currLoc = null;
 $(document).ready(function() {
     setTimeout(function(){
         popup('popupRoute', 'open');
-    },250);
+    },350);
 
 
     if ("geolocation" in navigator) {
