@@ -1,15 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Serious BUS-iness</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="css/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css" media="all" />
-
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
-        <script type="text/javascript" src="js/sb.js"></script>
+        {{> commonhead}}
 
     </head>
     <body>
@@ -45,7 +37,7 @@
             <li><h3>From:</h3><p>{{beginstop}}</p></li>
             <li><h3>To:</h3><p>{{endstop}}</p></li>
 
-            <li><a href="/addresv?newresv=true&sid={{lineid}}&beginstop={{beginstopid}}&endstop={{endstopid}}&schid={{schid}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">CONFIRM</a></li>
+            <li><a href="/addresv?newresv=true&sid={{lineid}}&beginstop={{beginstopid}}&endstop={{endstopid}}&schid={{schid}}" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-g">CONFIRM</a></li>
         </ul>
 
         </div><!---End content-wrap---->

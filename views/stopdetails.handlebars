@@ -1,9 +1,10 @@
-<div data-role="header" data-theme="b">
+<div data-role="header" data-theme="a">
     <h1>{{result.name}}</h1>
 </div>
 <div role="main" class="ui-content">
     <ul id="stopDetails" data-role="listview" data-inset="true">
-        <li><a href="javascript: showMap('{{result._id}}', '{{popupid}}');" class="ui-icon-location ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-a">Show Map</a></li>
+        <li><a href="javascript: showMap('{{result._id}}', 'popupDetails');" class="ui-icon-location ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-a">Show Map</a>
+        <a href="javascript: {{func}}('{{stopid}}', '{{result.name}}', {{result.plusmins}}, 'popupDetails');" class="ui-icon-check ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-b">Select as {{direction}}</a></li>
         <li><p><img src="{{result.imageurl}}" style="max-width: 100%;" alt="" /></p></li>
         <li><h3>Current # in line: {{result.inline}}</h3></li>
         <li><h3>Next bus at: {{#if nextBus}}{{nextBus}}{{else}}Unknown{{/if}}</h3></li>

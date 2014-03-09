@@ -7,6 +7,8 @@ exports.view = function(req, res){
 
     var shownBefore = req.cookies.shownbefore;
 
+    var deleted = req.query.deleted;
+
     // Check if cookie exists:
     if ( !req.cookies.sbpid ) {
         res.redirect('/');
@@ -15,7 +17,7 @@ exports.view = function(req, res){
 
         models.Reservations
             .find( {'userid': req.cookies.sbpid} )
-            .populate('sid', 'shortname')
+            .populate('sid')
             .populate('beginstop')
             .populate('endstop', 'name')
             .populate('schid')
@@ -41,6 +43,7 @@ exports.view = function(req, res){
             data['showOverlay'] = true;
         }
 
+        data['deleted'] = deleted;
         data['myreserv'] = userresv;
 
         if ( userresv != undefined )

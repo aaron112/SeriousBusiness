@@ -52,27 +52,29 @@ function clear() {
 }
 
 function showHint(hint) {
-    $("#schedule").html("<li><h3>"+hint+"</h3></li>");
-    $('#schedule').trigger('create');    
-    $('#schedule').listview('refresh');
+    $("#hint").html(hint);
+
+    $("#schedule").empty();
+
+    toast(hint, 'ui-body-g');
 }
 
 function turnBlack(id) {
-    $(id).removeClass('ui-btn-a');
-    $(id).removeClass('btn-green');
-    $(id).addClass('ui-btn-b');
+    $(id).removeClass('ui-btn-b');
+    $(id).removeClass('ui-btn-c');
+    $(id).addClass('ui-btn-a');
 }
 
 function turnGreen(id) {
     $(id).removeClass('ui-btn-a');
-    $(id).removeClass('ui-btn-b');
-    $(id).addClass('btn-green');
+    $(id).removeClass('ui-btn-c');
+    $(id).addClass('ui-btn-b');
 }
 
 function turnWhite(id) {
-    $(id).removeClass('btn-green');
+    $(id).removeClass('ui-btn-a');
     $(id).removeClass('ui-btn-b');
-    $(id).addClass('ui-btn-a');
+    $(id).addClass('ui-btn-c');
 }
 
 function selectRoute(id, name) {
@@ -87,6 +89,8 @@ function selectRoute(id, name) {
     if ( currLoc ) {
         lat = currLoc.coords.latitude;
         lon = currLoc.coords.longitude;
+    } else {
+        toast("Current location unavailable.", 'ui-body-e');
     }
 
     $('#popupRoute').bind({
@@ -114,25 +118,28 @@ function selectRoute(id, name) {
     }
 }
 
-function selectFrom(id, name, pm) {
+function selectFrom(id, name, pm, fromPopup) {
 
-    popup('popupFrom', 'close');
+    // Prevent restore popup
+    lastPopup = null;
+
+    popup(fromPopup, 'close');
 
     if ( from == id )
         return;
 
-    $('#popupFrom').bind({
+    $('#'+fromPopup).bind({
         popupafterclose: function(event, ui) {
             clear();
 
             from = id;
             plusmins = pm;
 
-            $( "#fromSelect" ).text(name);
+            $('#fromSelect').text(name);
 
             $.get("/getstops?rid="+rid+"&excl="+id, onAjaxDone);
             
-            $('#popupFrom').unbind();
+            $('#'+fromPopup).unbind();
         }
     });
 
@@ -150,9 +157,12 @@ function selectFrom(id, name, pm) {
     }
 }
 
-function selectTo(id, name, pm) {
+function selectTo(id, name, pm, fromPopup) {
 
-    popup('popupTo', 'close');
+    // Prevent restore popup
+    lastPopup = null;
+
+    popup(fromPopup, 'close');
 
     if ( to == id )
         return;
@@ -173,51 +183,17 @@ function selectTo(id, name, pm) {
     }
 }
 
-function showDetails(id, popupId, view) {
+function showDetails(id, popupId, view, func) {
 
     var viewurl = view=='map'?'viewmap':'viewcam';
 
     lastPopup = popupId;
 
     popup(popupId, 'close');
-    $.mobile.showPageLoadingMsg(true);
 
     $( '#'+popupId ).bind({
         popupafterclose: function(event, ui) {
-            $.get("/viewcam?popup=true&stopid="+id, onAjaxDone);
-            $( '#'+popupId ).unbind();
-        }
-    });
-
-    function onAjaxDone(result) {
-        console.log("onAjaxDone()");
-
-
-        $('#popupDetails').html(result);
-        $('#popupDetails').trigger('create');
-
-        $('#popupDetails').bind({
-            popupafterclose: function(event, ui) {
-                restoreLastPopup();
-                $('#popupDetails').unbind();
-            }
-        });
-
-        popup('popupDetails', 'open');
-        $.mobile.hidePageLoadingMsg();
-    }
-}
-
-
-function showDetails(id, popupId) {
-
-    lastPopup = popupId;
-
-    popup(popupId, 'close');
-
-    $( '#'+popupId ).bind({
-        popupafterclose: function(event, ui) {
-            $.get("/viewcam?popup=true&popupid=popupDetails&stopid="+id, onAjaxDone);
+            $.get("/viewcam?popup=true&stopid="+id+"&func="+func, onAjaxDone);
             $( '#'+popupId ).unbind();
         }
     });
@@ -239,28 +215,34 @@ function showDetails(id, popupId) {
         popup('popupDetails', 'open');
     }
 }
-
 
 function showMap(id, popupId) {
 
+    $('#popupDetails').html('<a href="#" data-rel="back" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><iframe src="/viewmap?stopid='+id+'" width="270" height="400" seamless></iframe>');
+    $('#popupDetails').trigger('create');
+
+    // Prevent restore popup
+    //lastPopup = null;
+
     //lastPopup = popupId;
-     $('#'+popupId).unbind();
-    popup(popupId, 'close');
 
-    $( '#'+popupId ).bind({
-        popupafterclose: function(event, ui) {
-            $('#popupDetails').html('<a href="#" data-rel="back" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><iframe src="/viewmap?stopid='+id+'" width="270" height="400" seamless></iframe>');
-            $( '#'+popupId ).unbind();
+    //$('#'+popupId).unbind();
+    //popup(popupId, 'close');
 
-            $('#popupDetails').bind({
-                popupafterclose: function(event, ui) {
-                    restoreLastPopup();
-                    $('#popupDetails').unbind();
-                }
-            });
-            popup('popupDetails', 'open');
-        }
-    });
+    //$( '#'+popupId ).bind({
+    //    popupafterclose: function(event, ui) {
+            
+    //        $( '#'+popupId ).unbind();
+
+    //        $('#popupDetails').bind({
+    //            popupafterclose: function(event, ui) {
+    //                restoreLastPopup();
+    //                $('#popupDetails').unbind();
+    //            }
+    //        });
+    //        popup('popupDetails', 'open');
+    //    }
+    //});
 }
 
 function restoreLastPopup() {

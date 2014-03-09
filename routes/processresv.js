@@ -63,7 +63,7 @@ exports.remove = function(req, res) {
                 .remove()
                 .exec(function (err) {
                     if(err) { console.log(err); res.send(500); }
-                    else res.redirect('/');
+                    else res.redirect('/main?deleted=true');
                 });
         } else {
             res.redirect('/');

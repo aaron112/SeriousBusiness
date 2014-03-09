@@ -1,34 +1,12 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <!-- Google Analytics Content Experiment code -->
-        <script>function utmx_section(){}function utmx(){}(function(){var
-        k='82884606-2',d=document,l=d.location,c=d.cookie;
-        if(l.search.indexOf('utm_expid='+k)>0)return;
-        function f(n){if(c){var i=c.indexOf(n+'=');if(i>-1){var j=c.
-        indexOf(';',i);return escape(c.substring(i+n.length+1,j<0?c.
-        length:j))}}}var x=f('__utmx'),xx=f('__utmxx'),h=l.hash;d.write(
-        '<sc'+'ript src="'+'http'+(l.protocol=='https:'?'s://ssl':
-        '://www')+'.google-analytics.com/ga_exp.js?'+'utmxkey='+k+
-        '&utmx='+(x?x:'')+'&utmxx='+(xx?xx:'')+'&utmxtime='+new Date().
-        valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
-        '" type="text/javascript" charset="utf-8"><\/sc'+'ript>')})();
-        </script><script>utmx('url','A/B');</script>
-        <!-- End of Google Analytics Content Experiment code -->
-
-
-        <title>Serious BUS-iness</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="css/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css" media="all" />
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
+        {{> commonhead}}
 
     </head>
     <body>
         <!---start-wrap---->
-        <div id="page-wrap" class="wrap" data-role="page">
+        <div id="page-wrap-noswipe" class="wrap" data-role="page">
 
         <!---start-header---->
         <div id="page">
@@ -43,14 +21,14 @@
         <!---start-slider (Main content)---->
         <div class="slider">
 
+        <!-- BEGIN Popups -->
         <div data-role="header" style="overflow:visible;">
-        <a href="/" data-icon="back" rel="external">Back</a>
+        <a href="/" data-icon="back" rel="external" data-theme="a">Back</a>
         <h1 style="overflow:visible;">New Reservation</h1>
         </div><!-- /header -->
 
-        <!-- BEGIN Popups -->
-        <div data-role="popup" id="popupRoute" data-theme="b" data-overlay-theme="b">
-            <ul data-role="listview" data-inset="true" style="min-width:210px;">
+        <div data-role="popup" id="popupRoute" data-theme="a" data-overlay-theme="f">
+            <ul data-role="listview" data-inset="true" style="min-width:210px;" data-divider-theme="d">
                 <li data-role="list-divider">Select a route</li>
                 {{#each result}}
                 <li><a href="javascript: selectRoute('{{_id}}', '{{name}}');">{{name}}</a></li>
@@ -58,19 +36,23 @@
             </ul>
         </div><!-- /popupRoute -->
 
-        <div data-role="popup" id="popupFrom" data-theme="b" data-overlay-theme="b" style="min-width:270px;">
-            <ul id="fromStops" data-role="listview" data-split-icon="camera" data-inset="true" style="min-width:270px;" data-count-theme="a">
+        <div data-role="popup" id="popupFrom" data-theme="a" data-overlay-theme="f" style="min-width:270px;">
+            <ul id="fromStops" data-role="listview" data-split-icon="camera" data-inset="true" style="min-width:270px;" data-count-theme="a" data-divider-theme="d">
             <!-- Populated by AJAX -->
             </ul>
         </div><!-- /popupFrom -->
 
-        <div data-role="popup" id="popupTo" data-theme="b" data-overlay-theme="b" style="min-width:270px;">
-            <ul id="toStops" data-role="listview" data-split-icon="camera" data-inset="true">
+        <div data-role="popup" id="popupTo" data-theme="a" data-overlay-theme="f" style="min-width:270px;">
+            <ul id="toStops" data-role="listview" data-split-icon="camera" data-inset="true" data-divider-theme="d">
             <!-- Populated by AJAX -->
             </ul>
         </div><!-- /popupTo -->
 
-        <div data-role="popup" id="popupDetails" data-overlay-theme="b" data-theme="a" data-dismissible="true" style="max-width:300px;">
+        <div data-role="popup" id="popupDetails" data-theme="a" data-overlay-theme="f" data-dismissible="true" style="max-width:300px;" data-divider-theme="d">
+            <!-- Populated by AJAX -->
+        </div><!-- /popupDetails -->
+
+        <div data-role="popup" id="popupTime" data-theme="a" data-overlay-theme="f" data-dismissible="true" style="max-width:300px;" data-divider-theme="d">
             <!-- Populated by AJAX -->
         </div><!-- /popupDetails -->
 
@@ -80,13 +62,14 @@
 
         <!--- Place content HERE ---->
 
-        <a href="javascript: popup('popupRoute', 'open');" id="routeSelect" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow btn-green">Shuttle Route</a>
-        <a href="javascript: popup('popupFrom', 'open');" id="fromSelect" class="ui-icon-carat-d ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-a">Origin</a>
-        <a href="javascript: popup('popupTo', 'open');" id="toSelect" class="ui-icon-carat-u ui-btn-icon-right ui-btn-icon- ui-btn ui-corner-all ui-shadow">Destination</a>
-        <br>
-        <ul id="schedule" data-role="listview" data-inset="true" data-split-icon="right" data-theme="a" data-count-theme="a">
+        <a href="javascript: popup('popupRoute', 'open');" id="routeSelect" class="ui-icon-star ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-a">Shuttle Route</a>
+        <a href="javascript: popup('popupFrom', 'open');" id="fromSelect" class="ui-icon-location ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-c">Origin</a>
+        <a href="javascript: popup('popupTo', 'open');" id="toSelect" class="ui-icon-location ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-c">Destination</a>
+        <a href="javascript: popup('popupTime', 'open');" id="timeSelect" class="ui-icon-clock ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-g">Select Time Range</a>
+
+        <ul id="schedule" data-role="listview" data-inset="true" data-split-icon="right" data-theme="c" data-count-theme="a">
             <!-- Populated by AJAX -->
-            <li><h3>Select shuttle route to begin.</h3></li>
+            <li data-icon="false"><a id="hint" style="pointer-events: none; cursor: default;">Select shuttle route to begin.</a></li>
         </ul>
 
         </div><!---End content-wrap---->
@@ -105,6 +88,7 @@
 
         <script type="text/javascript" src="js/sb.js"></script>
         <script type="text/javascript" src="js/newresvajax.js"></script>
-        
+        <script type="text/javascript" src="js/toast.js"></script>
+
     </body>
 </html>

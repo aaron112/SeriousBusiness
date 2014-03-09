@@ -1,15 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Serious BUS-iness</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="css/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css" media="all" />
-
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
-        <script type="text/javascript" src="js/sb.js"></script>
+        {{> commonhead}}
 
         <script type="text/javascript" src="js/viewresv.js"></script>
 
@@ -38,15 +30,16 @@
 
         <div class="contentwrap"><!---Start content-wrap---->
 
-        <div data-role="popup" id="deleteDialog" data-overlay-theme="b" data-theme="a" data-dismissible="false" style="max-width:400px;">
-            <div data-role="header" data-theme="b">
-                <h1>Cancel?</h1>
+        <div data-role="popup" id="deleteDialog" data-overlay-theme="b" data-theme="d" data-dismissible="false" style="max-width:400px;">
+            <div data-role="header" data-theme="d">
+                <h1>Cancel Reservation?</h1>
             </div>
             <div role="main" class="ui-content">
                 <h3 class="ui-title">Are you sure you want to cancel this reservation?</h3>
-                <p>This action cannot be undone.</p>
-                <a id="deleteButton" href="#" rel="external" class="ui-icon-delete ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-b" data-ajax="false">Delete</a>
-                <a href="#" class="ui-icon-carat-l ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-a" data-rel="back" data-transition="flow">Cancel</a>
+                <p id="delInfo"></p>
+                <hr>
+                <a id="deleteButton" href="#" rel="external" class="ui-icon-delete ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-d" data-ajax="false">Cancel Reservation</a>
+                <a href="#" class="ui-icon-carat-l ui-btn-icon-left ui-btn ui-corner-all ui-shadow ui-btn-a" data-rel="back" data-transition="flow">Back</a>
             </div>
         </div>
 
@@ -55,22 +48,21 @@
         {{#if showreserv}}
 
 
-        <ul data-role="listview" data-inset="true" data-split-icon="delete">
-            <li data-role="list-divider">TODAY - Friday, February 14, 2014 <span class="ui-li-count">{{myreserv.length}}</span></li>
+        <ul data-role="listview" data-inset="true" data-icon="delete" data-theme="c" data-divider-theme="d">
+            <li data-role="list-divider">TODAY - Friday, February 14, 2014 <span class="btn-green ui-li-count">{{myreserv.length}}</span></li>
 
             {{#each myreserv}}
             <li>
-                <a href="#">
+                <a href="javascript: showDeleteDialog('{{id}}', '{{sid.name}}', '{{beginstop.name}}', '{{endstop.name}}', '{{time}}');">
                 <h3>{{beginstop.name}}</h3>
                 <p>TO: {{endstop.name}}</p>
                 <p class="ui-li-aside"><strong>{{time}}</strong><br/>Route: {{sid.shortname}}</p>
                 </a>
-                <a href="javascript: showDeleteDialog('{{id}}');">Cancel Reservation</a>
             </li>
             {{/each}}
         </ul>
 
-        <div class="alert alert-warning"><button class="ui-btn ui-btn-a ui-corner-all" onclick="window.location='/newresv'">Make another reservation</button>
+        <div class="alert alert-warning"><button class="ui-btn ui-btn-g ui-corner-all" onclick="window.location='/newresv'">Make another reservation</button>
         </div>
 
         {{else}}
@@ -82,13 +74,21 @@
         {{/if}}
 
         <div class="alert alert-warning">You do not have any reservations yet. <br>
-        	<button class="ui-btn ui-btn-a ui-corner-all" onclick="window.location='/newresv'">Make a reservation now!</button>
+        	<button class="ui-btn ui-btn-g ui-corner-all" onclick="window.location='/newresv'">Click to make reservation now!</button>
         </div>
 
         {{/if}}
 
         </div><!---End content-wrap---->
 
+        {{#if deleted}}
+        <script type="text/javascript" src="js/toast.js"></script>
+        <script type="text/javascript">
+        $( document ).on( "pagecreate", "#page-wrap", function() {
+            toast('Reservation cancelled.', 'ui-body-g');
+        });
+        </script>
+        {{/if}}
 
         <div data-role="footer" style="overflow:hidden;">
         <h1>Copyright 2014 SeriousBusiness</h1>

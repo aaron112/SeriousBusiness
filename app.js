@@ -13,7 +13,6 @@ var mongoose = require('mongoose');
 var login = require('./routes/login');
 var main = require('./routes/main');
 
-var newresvold = require('./routes/newresv-old');
 var newresv = require('./routes/newresv');
 var getstops = require('./routes/getstops');
 var getsch = require('./routes/getsch');
@@ -62,7 +61,6 @@ app.post('/process_login', login.process);
 app.get('/process_login', login.process);
 app.get('/main', main.view);
 
-app.get('/newresv-old', newresvold.view);
 app.get('/newresv', newresv.view);
 app.get('/getstops', getstops.view);
 app.get('/getsch', getsch.view);

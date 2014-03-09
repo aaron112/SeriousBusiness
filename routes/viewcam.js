@@ -14,6 +14,7 @@ exports.view = function(req, res){
 
     } else {
         var stopid = req.query.stopid;
+        var func = req.query.func;
 
         console.log("stopid = " + stopid);
         
@@ -37,7 +38,11 @@ exports.view = function(req, res){
             function render(err, schresult) {
                 var data = {};
                 data['result'] = result;
-                data['popupid'] = popupid;
+
+                data['stopid'] = stopid;
+                data['func'] = func;
+
+                data['direction'] = (func=='selectFrom') ? 'Origin' : 'Destination';
 
                 if ( schresult ) {
                     var nextBus = new Date(schresult.date.getTime() + (result.plusmins*60000) )

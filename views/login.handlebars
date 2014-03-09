@@ -1,15 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Serious BUS-iness</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="css/jquery.mobile-1.4.0.min.css" rel="stylesheet" type="text/css" media="all" />
-
-        
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
+        {{> commonhead}}
 
     </head>
     <body>
@@ -42,9 +34,9 @@
             <input type="text" placeholder="UCSD PID" name="pid" autofocus>
             <input type="password" placeholder="Password" name="pass">
             <label class="checkbox">
-                  <input type="checkbox" value="remember-me"> Remember me
+                  <input type="checkbox" data-theme="c" value="remember-me"> Remember me
             </label>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <button data-theme="g" type="submit">Sign in</button>
         </form>
 
         </div><!---End content-wrap---->

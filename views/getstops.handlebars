@@ -1,12 +1,12 @@
 <li data-role="list-divider">{{dividerTitle}}</li>
 {{#each result}}
 <li>
-<a href="javascript: {{../func}}('{{_id}}', '{{name}}', {{plusmins}});">
+<a href="javascript: {{../func}}('{{_id}}', '{{name}}', {{plusmins}}, '{{../popupId}}');">
 {{name}}
 {{#if nearest}}
 <span class="btn-green ui-li-count">Nearest</span>
 {{/if}}
 </a>
-<a href="javascript: showDetails('{{_id}}', '{{../popupId}}');">Show Details</a>
+<a href="javascript: showDetails('{{_id}}', '{{../popupId}}', 'cam', '{{../func}}');" style="min-width:50px;">Show Details</a>
 </li>
 {{/each}}
