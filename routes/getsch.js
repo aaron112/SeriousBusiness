@@ -61,7 +61,8 @@ exports.view = function(req, res){
         models.Schedule
             .find( {
                 'sid': rid,
-                'date': timeConstraints} )
+                'date': timeConstraints,
+                'seatsleft': {'$gt': 0}} )
             .sort('_id')
             .exec(render);
     }

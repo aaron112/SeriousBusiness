@@ -57,8 +57,10 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', login.view);
+app.get('/signup', login.signup);
 app.post('/process_login', login.process);
 app.get('/process_login', login.process);
+app.post('/process_signup', login.process_signup);
 app.get('/main', main.view);
 
 app.get('/newresv', newresv.view);

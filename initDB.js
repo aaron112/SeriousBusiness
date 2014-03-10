@@ -31,7 +31,7 @@ var tablecount = 0;
 
 
 // Step 2: Remove all existing documents
-models.Shuttles
+models.Routes
   .find()
   .remove()
   .exec(onceClear); // callback to continue at
@@ -67,7 +67,7 @@ function onceClear(err) {
 
   tablecount = 0;
 
-  saveTable(models.Shuttles, 'Shuttles');
+  saveTable(models.Routes, 'Routes');
   saveTable(models.Busstops, 'Busstops');
   saveTable(models.Schedule, 'Schedule');
 }

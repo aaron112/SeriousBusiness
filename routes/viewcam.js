@@ -38,6 +38,7 @@ exports.view = function(req, res){
             function render(err, schresult) {
                 var data = {};
                 data['result'] = result;
+                data['username'] = req.cookies.sbuname;
 
                 data['stopid'] = stopid;
                 data['func'] = func;

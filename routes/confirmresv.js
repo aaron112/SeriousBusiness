@@ -17,7 +17,7 @@ exports.view = function(req, res){
         res.redirect('/');
 
     } else {
-        models.Shuttles
+        models.Routes
             .findOne( {'_id': lineid} )
             .exec(shuttleDone);
 
@@ -36,7 +36,7 @@ exports.view = function(req, res){
 
     function shuttleDone(err, result) {
         if(err) { console.log(err); res.send(500); }
-        results['shuttles'] = result;
+        results['Routes'] = result;
         checkDone();
     }
 
@@ -69,11 +69,13 @@ exports.view = function(req, res){
         console.log(results);
 
         var data = {};
+        data['username'] = req.cookies.sbuname;
+
         data["lineid"] = lineid;
         data["beginstopid"] = beginstop;
         data["endstopid"] = endstop;
 
-        data["line"] = results['shuttles']['name'];
+        data["line"] = results['Routes']['name'];
         data["beginstop"] = results['beginstop']['name'];
         data["endstop"] = results['endstop']['name'];
 

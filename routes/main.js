@@ -15,6 +15,8 @@ exports.view = function(req, res){
 
     } else {
 
+        console.log("req.cookies.sbpid: " + req.cookies.sbpid);
+
         models.Reservations
             .find( {'userid': req.cookies.sbpid} )
             .populate('sid')
@@ -28,6 +30,9 @@ exports.view = function(req, res){
         if(err) { console.log(err); res.send(500); }
 
         var schEntry;
+
+        console.log("userresv.length = " + userresv.length);
+        console.log("userresv = " + userresv);
 
         for ( var i in userresv ) {
 
@@ -43,6 +48,7 @@ exports.view = function(req, res){
             data['showOverlay'] = true;
         }
 
+        data['username'] = req.cookies.sbuname;
         data['deleted'] = deleted;
         data['myreserv'] = userresv;
 

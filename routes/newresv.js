@@ -15,7 +15,7 @@ exports.view = function(req, res){
         res.redirect('/');
 
     } else {
-        models.Shuttles.find().exec(render);
+        models.Routes.find().exec(render);
     }
 
     function render(err, result) {
@@ -25,6 +25,7 @@ exports.view = function(req, res){
 
         var data = {};
         data['result'] = result;
+        data['username'] = req.cookies.sbuname;
 
         res.render('newresv', data);
     }

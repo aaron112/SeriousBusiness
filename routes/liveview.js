@@ -20,7 +20,7 @@ exports.view = function(req, res) {
 	            .exec(render);
         }
         else {
-        	models.Shuttles.find().exec(render);
+        	models.Routes.find().exec(render);
         }
 
         console.log("line = " + line);
@@ -31,6 +31,7 @@ exports.view = function(req, res) {
         	var data = {};
         	data['line'] = line;
         	data['result'] = result;
+            data['username'] = req.cookies.sbuname;
 	        res.render('liveview', data);
     	}
     }

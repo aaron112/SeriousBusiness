@@ -1,4 +1,3 @@
 #!/bin/bash
-node initDB.js
+#node initDB.js
 supervisor app.js
-
