@@ -9,14 +9,7 @@ function showDeleteDialog(id, stopName, origStop, destStop, time) {
     $( "body" ).pagecontainer( "getActivePage" ).find('#deleteDialog').popup('open', { positionTo: "window", transition: "pop" });
 }
 
-function showLeftPanel() {
-    $( "#floating" ).hide();
-    $( "body" ).pagecontainer( "getActivePage" ).find("#leftpanel").panel( "open" );
-}
-
 $(document).ready(function(){
-    
-    $('.navicon').click(showLeftPanel);
 
     $( "#floating" ).click(function() {
         $( "#floating" ).hide();

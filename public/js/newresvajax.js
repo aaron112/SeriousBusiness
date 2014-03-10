@@ -1,15 +1,14 @@
 
 var rid = null, from = null, to = null, plusmins = 0;
+var timeRangeStart = null;
+var timeRangeEnd = null;
+var timeRangeDisplay = '';
 
 var lastPopup = null;
-
 var currLoc = null;
 
-$(document).ready(function() {
-    setTimeout(function(){
-        popup('popupRoute', 'open');
-    },350);
 
+$(document).ready(function() {
 
     if ("geolocation" in navigator) {
         console.log(" geolocation is available");
@@ -20,8 +19,56 @@ $(document).ready(function() {
     } else {
         console.log(" geolocation is NOT available");
     }
+
+    showHint("Select Shuttle Route to begin.");
+
+    var currTime = new Date();
+    var currTimeMins = currTime.getHours()*60 + currTime.getMinutes();
+
+    // Time range select
+    $('#timeSlider')
+    .noUiSlider({
+         range: [0, 1439]
+        ,start: [currTimeMins, 1439]
+        ,handles: 2
+        ,connect: true
+        ,step: 15
+        ,slide: updateTime
+    });
+
+    updateTime();
+
+    setTimeout(function(){
+        popup('popupRoute', 'open');
+    },400);
     
 });
+
+function updateTime() {
+
+    var start = $('#timeSlider').val()[0];
+    var start_hour = Math.floor(start/60);
+    var start_hour_12 = (start_hour != 12)?start_hour%12:start_hour;
+    var start_ampm = (start_hour < 12) ? 'AM' : 'PM';
+
+    var start_min = start%60;
+    var start_min_display = start_min==0?'00':start_min;
+
+    var end = $('#timeSlider').val()[1];
+    var end_hour = Math.floor(end/60);
+    var end_hour_12 = (end_hour != 12)?end_hour%12:end_hour;
+    var end_ampm = (end_hour < 12) ? 'AM' : 'PM';
+
+    var end_min = end%60;
+    var end_min_display = end_min==0?'00':end_min;
+
+    timeRangeDisplay = start_hour_12+":"+start_min_display+" "+start_ampm+" - "+end_hour_12+":"+end_min_display+" "+end_ampm;
+
+    $('#confirmTime').text(timeRangeDisplay);
+
+    timeRangeStart = start_hour+":"+start_min;
+    timeRangeEnd = end_hour+":"+end_min;
+}
 
 function popup(id, action) {
 
@@ -164,14 +211,27 @@ function selectTo(id, name, pm, fromPopup) {
 
     popup(fromPopup, 'close');
 
+    if ( timeRangeStart && timeRangeEnd )
+        $("#timeSelect").text(timeRangeDisplay);
+
+    if ( (!id || !name ) && (!rid || !from || !to || !plusmins) )
+        return;
+
     if ( to == id )
         return;
 
-    to = id;
+    if ( id )
+        to = id;
 
-    $( "#toSelect" ).text(name);
+    if ( name )
+        $( "#toSelect" ).text(name);
 
-    $.get("/getsch?rid="+rid+"&from="+from+"&to="+to+"&plusmins="+plusmins, onAjaxDone);
+    var timeQuery = null;
+    if ( timeRangeStart && timeRangeEnd ) {
+        timeQuery="&stime="+timeRangeStart+"&etime="+timeRangeEnd;
+    }
+
+    $.get("/getsch?rid="+rid+"&from="+from+"&to="+to+"&plusmins="+plusmins+(timeQuery?timeQuery:""), onAjaxDone);
 
     function onAjaxDone(result) {
         $( ("#schedule") ).html(result);
@@ -216,33 +276,10 @@ function showDetails(id, popupId, view, func) {
     }
 }
 
-function showMap(id, popupId) {
+function showMap(id, popupId, selectBtn) {
 
-    $('#popupDetails').html('<a href="#" data-rel="back" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><iframe src="/viewmap?stopid='+id+'" width="270" height="400" seamless></iframe>');
+    $('#popupDetails').html('<a href="#" data-rel="back" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><iframe src="/viewmap?stopid='+id+'" width="270" height="400" seamless></iframe>'+selectBtn);
     $('#popupDetails').trigger('create');
-
-    // Prevent restore popup
-    //lastPopup = null;
-
-    //lastPopup = popupId;
-
-    //$('#'+popupId).unbind();
-    //popup(popupId, 'close');
-
-    //$( '#'+popupId ).bind({
-    //    popupafterclose: function(event, ui) {
-            
-    //        $( '#'+popupId ).unbind();
-
-    //        $('#popupDetails').bind({
-    //            popupafterclose: function(event, ui) {
-    //                restoreLastPopup();
-    //                $('#popupDetails').unbind();
-    //            }
-    //        });
-    //        popup('popupDetails', 'open');
-    //    }
-    //});
 }
 
 function restoreLastPopup() {

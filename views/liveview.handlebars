@@ -7,16 +7,9 @@
     <body>
         <!---start-wrap---->
         <div id="page-wrap" class="wrap" data-role="page">
-
-        <!---start-header---->
-        <div id="page">
-            <div id="header">
-                <a class="navicon" href="#leftpanel"> </a>
-                <div class="logo"><img src="images/logo.png" alt="" /></div>
-        </div>
-
+        
+        {{> logoheader}}
         {{> menu}}
-        <!---//End-header---->
 
         <!---start-slider (Main content)---->
         <div class="slider">
@@ -52,10 +45,7 @@
 
         </div><!---End content-wrap---->
 
-        <div data-role="footer" style="overflow:hidden;">
-        <h1>Copyright 2014 SeriousBusiness</h1>
-        </div><!-- /header -->
-        <br>
+        {{> footer}}
 
         </div><!---//End-slider---->
 

@@ -1,26 +1,20 @@
-        <!-- Begin sliding menu -->
+<!-- Begin sliding menu -->
         <div data-role="panel" id="leftpanel" data-position="left" data-display="overlay" data-theme="a">
             <ul data-role="listview">
+                <li data-icon="false" style="pointer-events: none;
+   cursor: default;"><a href="#">Logged in as: </a></li>
                 <li data-icon="back"><a href="#" data-rel="close">Back</a></li>
-                <li>
-                    <a href="/main" rel="external">
-                        <img src="images/home-icon.png" alt="" class="ui-li-icon ui-corner-none" />
-                        My Reservations</a>
+                <li data-icon="search">
+                    <a href="/main" rel="external">My Reservations</a>
                 </li>
-                <li>
-                    <a href="/newresv" rel="external">
-                        <img src="images/blog.png" alt="" class="ui-li-icon ui-corner-none" />
-                        New Reservation</a>
+                <li data-icon="edit">
+                    <a href="/newresv" rel="external">Reserve a spot</a>
                 </li>
-                <li>
-                    <a href="/liveview" rel="external">
-                        <img src="images/icon.png" alt="" class="ui-li-icon ui-corner-none" />
-                        Live Bus Information</a>
+                <li data-icon="info">
+                    <a href="/liveview" rel="external">Live Bus Information</a>
                 </li>
-                <li data-theme="d">
-                    <a href="/process_login?logout=true" rel="external">
-                        <img src="images/return.png" alt="" class="ui-li-icon ui-corner-none" />
-                        Log-out</a>
+                <li data-theme="d" data-icon="power">
+                    <a href="/process_login?logout=true" rel="external">Logout</a>
                 </li>
             </ul>   
         </div>

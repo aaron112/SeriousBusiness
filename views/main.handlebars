@@ -10,15 +10,8 @@
         <!---start-wrap---->
         <div id="page-wrap" class="wrap" data-role="page">
 
-        <!---start-header---->
-        <div id="page">
-            <div id="header">
-                <a class="navicon" href="#"> </a>
-                <div class="logo"><img src="images/logo.png" alt="" /></div>
-        </div>
-
+        {{> logoheader}}
         {{> menu}}
-        <!---//End-header---->
 
         <!---start-slider (Main content)---->
         <div class="slider">
@@ -46,8 +39,7 @@
         <!--- Place content HERE ---->
 
         {{#if showreserv}}
-
-
+        
         <ul data-role="listview" data-inset="true" data-icon="delete" data-theme="c" data-divider-theme="d">
             <li data-role="list-divider">TODAY - Friday, February 14, 2014 <span class="btn-green ui-li-count">{{myreserv.length}}</span></li>
 
@@ -82,18 +74,16 @@
         </div><!---End content-wrap---->
 
         {{#if deleted}}
+        <!-- Show "Reservation Cancelled" message. -->
         <script type="text/javascript" src="js/toast.js"></script>
         <script type="text/javascript">
-        $( document ).on( "pagecreate", "#page-wrap", function() {
-            toast('Reservation cancelled.', 'ui-body-g');
-        });
+            $( document ).on( "pagecreate", "#page-wrap", function() {
+                toast('Reservation cancelled.', 'ui-body-g');
+            });
         </script>
         {{/if}}
 
-        <div data-role="footer" style="overflow:hidden;">
-        <h1>Copyright 2014 SeriousBusiness</h1>
-        </div><!-- /header -->
-        <br>
+        {{> footer}}
 
         </div><!---//End-slider---->
 

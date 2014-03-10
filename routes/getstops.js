@@ -66,6 +66,6 @@ exports.view = function(req, res){
 
         data['nearest'] = result[0];
 
-        res.render('getstops', data);
+        res.render('ajax/getstops', data);
     }
 };

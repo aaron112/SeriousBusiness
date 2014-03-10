@@ -3,30 +3,17 @@
     <head>
         {{> commonhead}}
 
+        <link href="css/jquery.nouislider.min.css" rel="stylesheet">
+
     </head>
     <body>
         <!---start-wrap---->
         <div id="page-wrap-noswipe" class="wrap" data-role="page">
 
-        <!---start-header---->
-        <div id="page">
-            <div id="header">
-                <a class="navicon" href="#leftpanel"> </a>
-                <div class="logo"><img src="images/logo.png" alt="" /></div>
-        </div>
-
+        {{> logoheader}}
         {{> menu}}
-        <!---//End-header---->
-
-        <!---start-slider (Main content)---->
-        <div class="slider">
 
         <!-- BEGIN Popups -->
-        <div data-role="header" style="overflow:visible;">
-        <a href="/" data-icon="back" rel="external" data-theme="a">Back</a>
-        <h1 style="overflow:visible;">New Reservation</h1>
-        </div><!-- /header -->
-
         <div data-role="popup" id="popupRoute" data-theme="a" data-overlay-theme="f">
             <ul data-role="listview" data-inset="true" style="min-width:210px;" data-divider-theme="d">
                 <li data-role="list-divider">Select a route</li>
@@ -48,15 +35,27 @@
             </ul>
         </div><!-- /popupTo -->
 
-        <div data-role="popup" id="popupDetails" data-theme="a" data-overlay-theme="f" data-dismissible="true" style="max-width:300px;" data-divider-theme="d">
+        <div data-role="popup" id="popupDetails" data-theme="a" data-overlay-theme="f" data-dismissible="true" style="width:300px;" data-divider-theme="d">
             <!-- Populated by AJAX -->
         </div><!-- /popupDetails -->
 
-        <div data-role="popup" id="popupTime" data-theme="a" data-overlay-theme="f" data-dismissible="true" style="max-width:300px;" data-divider-theme="d">
-            <!-- Populated by AJAX -->
-        </div><!-- /popupDetails -->
-
+        <div data-role="popup" id="popupTime" data-theme="a" data-overlay-theme="f" data-dismissible="true" style="width:300px;" data-divider-theme="d">
+            <ul data-role="listview" data-inset="true" style="min-width:210px;" data-divider-theme="d">
+                <li data-role="list-divider">Select Time Range</li>
+                <li data-theme="a" data-icon="false"><a><div id="timeSlider"></div></a></li>
+                <li><a href="javascript: selectTo(null, null, null, 'popupTime');" class="ui-icon-check ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-g" id="confirmTime"></a></li>
+            </ul>
+        </div><!-- /popupTime -->
         <!-- END Popups -->
+
+
+        <!---start-slider (Main content)---->
+        <div class="slider">
+
+        <div data-role="header" style="overflow:visible;">
+        <a href="/" data-icon="back" rel="external" data-theme="a">Back</a>
+        <h1 style="overflow:visible;">New Reservation</h1>
+        </div><!-- /header -->
 
         <div class="contentwrap"><!---Start content-wrap---->
 
@@ -74,10 +73,7 @@
 
         </div><!---End content-wrap---->
         
-        <div data-role="footer" style="overflow:hidden;">
-        <h1>Copyright 2014 SeriousBusiness</h1>
-        </div><!-- /footer -->
-        <br>
+        {{> footer}}
 
         </div><!---//End-slider---->
 
@@ -89,6 +85,7 @@
         <script type="text/javascript" src="js/sb.js"></script>
         <script type="text/javascript" src="js/newresvajax.js"></script>
         <script type="text/javascript" src="js/toast.js"></script>
+        <script type="text/javascript" src="js/jquery.nouislider.min.js"></script>
 
     </body>
 </html>

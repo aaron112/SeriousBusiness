@@ -8,6 +8,8 @@ exports.view = function(req, res){
     var from = req.query.from;
     var to = req.query.to;
     var plusmins = req.query.plusmins;
+    var stime = req.query.stime;
+    var etime = req.query.etime;
 
     // Check if cookie exists:
     if ( !req.cookies.sbpid ) {
@@ -16,17 +18,50 @@ exports.view = function(req, res){
     } else {
 
         // Fake Date
-        var currTime = new Date();
-        currTime.setDate(19);
-        currTime.setMonth(1);
-        currTime.setFullYear(2014);
+        var cTime = new Date();
+        cTime.setDate(19);
+        cTime.setMonth(1);
+        cTime.setFullYear(2014);
 
-        console.log("current time: "+currTime.toString());
+        var sTime = new Date();
+        sTime.setDate(19);
+        sTime.setMonth(1);
+        sTime.setFullYear(2014);
+
+        if ( stime ) {
+            var stimeSplit = stime.split(":");
+            sTime.setHours(stimeSplit[0]);
+            sTime.setMinutes(stimeSplit[1]);
+
+            if ( sTime.getTime() < cTime.getTime() ) {
+                console.log("sTime("+sTime.toString()+") < cTime("+cTime.toString()+")");
+                sTime = cTime;
+            }
+        } else {
+            sTime = cTime;
+        }
+
+        console.log("current time: "+sTime.toString());
+
+        var timeConstraints = {'$gte': sTime};
+
+        var eTime = new Date();
+        eTime.setDate(19);
+        eTime.setMonth(1);
+        eTime.setFullYear(2014);
+        
+        if ( etime ) {
+            var stimeSplit = etime.split(':');
+            eTime.setHours(stimeSplit[0]);
+            eTime.setMinutes(stimeSplit[1]);
+
+            timeConstraints['$lte'] = eTime;
+        }
 
         models.Schedule
             .find( {
                 'sid': rid,
-                'date': {'$gte': currTime}} )
+                'date': timeConstraints} )
             .sort('_id')
             .exec(render);
     }
@@ -51,11 +86,11 @@ exports.view = function(req, res){
 
         var data = {};
         data['result'] = result;
+        data['hasdata'] = (result.length > 0);
         data['rid'] = rid;
         data['from'] = from;
         data['to'] = to;
 
-
-        res.render('getsch', data);
+        res.render('ajax/getsch', data);
     }
 };

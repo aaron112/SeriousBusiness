@@ -8,15 +8,8 @@
         <!---start-wrap---->
         <div id="page-wrap" class="wrap" data-role="page">
 
-        <!---start-header---->
-        <div id="page">
-            <div id="header">
-                <a class="navicon" href="#leftpanel"> </a>
-                <div class="logo"><img src="images/logo.png" alt="" /></div>
-        </div>
-
-
-        <!---//End-header---->
+        {{> logoheader}}
+        {{> menu}}
 
         <!---start-slider (Main content)---->
         <div class="slider">
@@ -26,8 +19,6 @@
         <h1 style="overflow:visible;">Live View<br>{{result.name}}</h1>
         </div><!-- /header -->
         <br>
-
-        {{> menu}}
 
         <div class="contentwrap"><!---Start content-wrap---->
 
@@ -41,10 +32,7 @@
         </ul>
         </div><!---End content-wrap---->
 
-        <div data-role="footer" style="overflow:hidden;">
-        <h1>Copyright 2014 SeriousBusiness</h1>
-        </div><!-- /footer -->
-        <br>
+        {{> footer}}
 
         </div><!---//End-slider---->
 

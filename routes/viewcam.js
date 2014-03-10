@@ -53,7 +53,7 @@ exports.view = function(req, res){
                 }
 
                 if ( popup )
-                    res.render('stopdetails', data);
+                    res.render('ajax/stopdetails', data);
                 else
                     res.render('viewcam', data);
             }

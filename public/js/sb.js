@@ -12,3 +12,6 @@ $( document ).on( "pagecreate", "#page-wrap", function() {
         }
     });
 });
+
+
+// Disable annoying Apple scroll overflow
