@@ -47,24 +47,29 @@ exports.view = function(req, res){
         var nearest = -1;
         var lastDistance = -1;
 
-        if ( shownearest && lat && lon ) {
+        if ( !excl ) {
 
-            for ( i in result ) {
-                var thisDistance = utils.distance(lat, lon, result[i]['lat'], result[i]['long'] );
+            if ( shownearest && lat && lon ) {
 
-                if ( lastDistance == -1 ||
-                 lastDistance > thisDistance ) {
+                for ( i in result ) {
+                    var thisDistance = utils.distance(lat, lon, result[i]['lat'], result[i]['long'] );
 
-                    lastDistance = thisDistance;
-                    nearest = i;
+                    if ( lastDistance == -1 ||
+                     lastDistance > thisDistance ) {
+
+                        lastDistance = thisDistance;
+                        nearest = i;
+                    }
                 }
+
+                if ( nearest != -1 )
+                    result[nearest]['nearest'] = true;
+            } else {
+                data['nolocation'] = true;
             }
 
-            if ( nearest != -1 )
-                result[nearest]['nearest'] = true;
+            data['nearest'] = result[0];
         }
-
-        data['nearest'] = result[0];
 
         res.render('ajax/getstops', data);
     }

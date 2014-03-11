@@ -41,6 +41,9 @@ $(document).ready(function() {
     setTimeout(function(){
         popup('popupRoute', 'open');
     },400);
+
+
+    clear();
     
 });
 
@@ -90,8 +93,9 @@ function popup(id, action) {
 
 function clear() {
 
-    $( "#fromSelect" ).text('Origin');
-    $( "#toSelect" ).text('Destination');
+    $( "#fromSelect" ).text('Start').hide();
+    $( "#toSelect" ).text('End').hide();
+    $( "#timeSelect" ).hide();
 
     from = null;
     to = null;
@@ -128,6 +132,8 @@ function selectRoute(id, name) {
     
     popup('popupRoute', 'close');
 
+    $( "#fromSelect" ).show();
+
     if ( rid == id )
         return;
 
@@ -137,12 +143,15 @@ function selectRoute(id, name) {
         lat = currLoc.coords.latitude;
         lon = currLoc.coords.longitude;
     } else {
-        toast("Current location unavailable.", 'ui-body-e');
+        toast("Current location unavailable. Please make sure your GPS is on.", 'ui-body-e');
     }
 
     $('#popupRoute').bind({
         popupafterclose: function(event, ui) {
             clear();
+
+            $( "#fromSelect" ).show();
+
             rid = id;
             $( "#routeSelect" ).text(name);
             $.get("/getstops?rid="+id+((currLoc)?("&shownearest=true&lat="+lat+"&lon="+lon):""), onAjaxDone);
@@ -156,7 +165,7 @@ function selectRoute(id, name) {
         $('#fromStops').trigger('create');    
         $('#fromStops').listview('refresh');
 
-        showHint("Next, select your origin stop.");
+        showHint("Next, select your start stop.");
         turnBlack('#routeSelect');
         turnGreen('#fromSelect');
         turnWhite('#toSelect');
@@ -179,6 +188,9 @@ function selectFrom(id, name, pm, fromPopup) {
         popupafterclose: function(event, ui) {
             clear();
 
+            $( "#fromSelect" ).show();
+            $( "#toSelect" ).show();
+
             from = id;
             plusmins = pm;
 
@@ -196,7 +208,7 @@ function selectFrom(id, name, pm, fromPopup) {
         $('#toStops').trigger('create');    
         $('#toStops').listview('refresh');
 
-        showHint("Finally, select your destination.");
+        showHint("Finally, select end stop.");
         turnBlack('#fromSelect');
         turnGreen('#toSelect');
 
@@ -206,6 +218,7 @@ function selectFrom(id, name, pm, fromPopup) {
 
 function selectTo(id, name, pm, fromPopup) {
 
+    $("#timeSelect").show();
     // Prevent restore popup
     lastPopup = null;
 

@@ -12,6 +12,7 @@ exports.view = function(req, res) {
         res.redirect('/');
 
     } else {
+
         var line = req.query.line;
         //data['line'] = line;
         if(line) {
@@ -28,10 +29,12 @@ exports.view = function(req, res) {
         function render(err, result) {
         	if(err) { console.log(err); res.send(500); }
         	console.log("result = " + result);
-        	var data = {};
-        	data['line'] = line;
-        	data['result'] = result;
-            data['username'] = req.cookies.sbuname;
+        	var data = {
+                'map': req.query.map?true:false,
+                'line': line,
+                'result': result,
+                'username': req.cookies.sbuname
+            };
 	        res.render('liveview', data);
     	}
     }
