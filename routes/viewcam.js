@@ -43,7 +43,7 @@ exports.view = function(req, res){
                 data['stopid'] = stopid;
                 data['func'] = func;
 
-                data['direction'] = (func=='selectFrom') ? 'Origin' : 'Destination';
+                data['direction'] = (func=='selectFrom') ? 'Start' : 'Destination';
 
                 if ( schresult ) {
                     var nextBus = new Date(schresult.date.getTime() + (result.plusmins*60000) )

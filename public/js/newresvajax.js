@@ -291,7 +291,7 @@ function showDetails(id, popupId, view, func) {
 
 function showMap(id, popupId, selectBtn) {
 
-    $('#popupDetails').html('<a href="#" data-rel="back" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><iframe src="/viewmap?stopid='+id+'" width="270" height="400" seamless></iframe>'+selectBtn);
+    $('#popupDetails').html('<a href="#" data-rel="back" class="ui-btn ui-btn-b ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a><iframe src="/viewmap?stopid='+id+'" width="100%" height="350" seamless></iframe>'+selectBtn);
     $('#popupDetails').trigger('create');
 }
 

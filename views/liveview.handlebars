@@ -2,16 +2,7 @@
 <html>
     <head>
 
-        <title>Serious BUS-iness</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-        <link href="css/jquery.mobile.flatui.min.css" rel="stylesheet" type="text/css" media="all" />
-        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-
         <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
-        <script type="text/javascript" src="js/sb.js"></script>
-
         {{#if map}}
         <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDSCQM9QEy0xFmmVkTA17CtZBtmFE-UfCU&sensor=false"></script>
         <script>
@@ -36,7 +27,7 @@
                     center: latlng,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
-                var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+                var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
                 // Add an overlay to the map of current lat/lng
                 var marker = new google.maps.Marker({
                     position: latlng,
@@ -47,11 +38,45 @@
         });
         </script>
         <style type="text/css">
-        #map-canvas { width: 100%; height: 100%; padding: 0; }
+        #page-wrap {
+            width: 100%;
+            height: 100%;
+        }
+
+        #map_content {
+            padding: 0px;
+            width: 300;
+            height: 300;
+            overflow: hidden;
+        }
+        #map_canvas { width: 100%; height: 100%; padding: 0; }
         </style>
         {{/if}}
+
+        <title>Serious BUS-iness</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <link href="css/jquery.mobile.flatui.min.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+        <script type="text/javascript" src="js/jquery.mobile-1.4.0.min.js"></script>
+        <script type="text/javascript" src="js/sb.js"></script>
     </head>
     <body>
+        {{#if map}}
+        <div id="page-wrap" data-role="page">
+            
+        {{> menu}}
+
+        <div data-role="header" style="overflow:hidden;">
+        <a href="#" data-icon="back" data-rel="back">Back</a>
+        <h1>Live View</h1>
+        </div><!-- /header -->
+
+            <div id="map_canvas"></div>
+
+
+        {{else}}
         <!---start-wrap---->
         <div id="page-wrap" class="wrap" data-role="page">
         
@@ -62,28 +87,23 @@
         <div class="slider">
 
         <div data-role="header" style="overflow:hidden;">
-
-        <a href="/" data-icon="back" rel="external">Back</a>
+        <a href="#" data-icon="back" data-rel="back">Back</a>
         <h1>Live View</h1>
         </div><!-- /header -->
+
 
         <div class="contentwrap"><!---Start content-wrap---->
 
         <!--- Place content HERE ---->
 
         {{#if line}}
-        {{#if map}}
-        <div role="main" class="ui-content" id="map-canvas">
-        <!-- map loads here... -->
-        </div>
-        {{else}}
+        
         <p style=""><h3>Pick a bus stop below:</h3></p>
         <div class="btn-group">
         {{#each result}}
         <a href="javascript: window.location = encodeURI('/viewcam?stop={{name}}&stopid={{_id}}');" rel="external" class="ui-icon-carat-r ui-btn-icon-right ui-btn ui-corner-all ui-shadow ui-btn-b">{{name}}</a>
         {{/each}}
         </div>
-        {{/if}}
 
         {{else}}
         <p style=""><h3>Pick a route below:</h3></p>
@@ -96,9 +116,11 @@
 
         </div><!---End content-wrap---->
 
-        {{> footer}}
 
         </div><!---//End-slider---->
+
+        {{/if}}
+        {{> footer}}
 
         </div><!---//End-wrap---->
 
