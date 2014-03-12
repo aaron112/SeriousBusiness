@@ -54,7 +54,7 @@
             {{/each}}
         </ul>
 
-        <div class="alert alert-warning"><button class="ui-btn ui-btn-g ui-corner-all" onclick="window.location='/newresv'">Make another reservation</button>
+        <div class="alert alert-warning"><a class="ui-btn ui-btn-g ui-corner-all" href="/newresv">Make another reservation</button>
         </div>
 
         {{else}}
@@ -66,7 +66,7 @@
         {{/if}}
 
         <div class="alert alert-warning">You do not have any reservations yet. <br>
-        	<button class="ui-btn ui-btn-g ui-corner-all" onclick="window.location='/newresv'">Click to make reservation now!</button>
+        	<a class="ui-btn ui-btn-g ui-corner-all" href="/newresv">Click to make reservation now!</button>
         </div>
 
         {{/if}}
